@@ -4,6 +4,26 @@ import RightArrow from '../../assets/Right Arrow.png';
 
 const StartupDirectory = () => {
     const [selectedFilters, setSelectedFilters] = useState([]);
+    const [companyProfiles, setCompanyProfiles] = useState([
+        {
+            id: 1,
+            name: 'Company A',
+            tags: ['Technology', 'Startup', 'Innovation'],
+            description: 'Company A is a tech startup specializing in innovative solutions.',
+        },
+        {
+            id: 2,
+            name: 'Company B',
+            tags: ['Healthcare', 'Innovation', 'Medical'],
+            description: 'Company B is a healthcare company focused on medical innovations.',
+        },
+        {
+            id: 3,
+            name: 'Company C',
+            tags: ['Finance', 'Fintech', 'Investment'],
+            description: 'Company C is a fintech company offering investment solutions.',
+        },
+    ]);
 
     const handleFilterSelection = (filter) => {
         if (selectedFilters.includes(filter)) {
@@ -12,6 +32,14 @@ const StartupDirectory = () => {
             setSelectedFilters([...selectedFilters, filter]);
         }
     };
+
+    const filteredProfiles = companyProfiles.filter((profile) => {
+        // If no filters are selected, show all profiles
+        if (selectedFilters.length === 0) return true;
+
+        // Check if the profile has at least one of the selected tags
+        return profile.tags.some((tag) => selectedFilters.includes(tag));
+    });
 
     return (
         <div className="px-10 py-20">
@@ -33,30 +61,47 @@ const StartupDirectory = () => {
                     <img src={RightArrow} alt="" className="ml-2" />
                 </p>
             </button>
-            <div>
-                <div className="relative w-80 h-[550px] rounded-lg bg-[#f5f5ee] border border-black p-4">
-                    {checkboxOptions.map((option) => (
-                        <div key={option.id} className="mb-4">
-                            <input
-                                type="checkbox"
-                                id={option.id}
-                                className="hidden"
-                                checked={selectedFilters.includes(option.id)}
-                                onChange={() => handleFilterSelection(option.id)}
-                            />
-                            <label htmlFor={option.id} className="cursor-pointer flex items-center gap-2 text-lg text-left text-black select-none">
-                                <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
-                                    {selectedFilters.includes(option.id) && (
-                                        <div className="w-2 h-2 bg-[#84DCCF] rounded-full"></div>
-                                    )}
-                                </div>
-                                {option.label}
-                            </label>
+            <div className="flex">
+                <div className="w-3/4 pr-4">
+                    {filteredProfiles.map((profile) => (
+                        <div key={profile.id} className="mb-4 bg-white rounded-lg border p-4">
+                            <h2 className="text-xl text-black">{profile.name}</h2>
+                            <p className="text-gray-500">{profile.description}</p>
+                            <div className="flex flex-wrap mt-2">
+                                {profile.tags.map((tag) => (
+                                    <span key={tag} className="mr-2 bg-[#84DCCF] text-white text-sm px-2 py-1 rounded-full">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     ))}
-                    <hr className="border-t border-gray-300 mb-4" />
-                    <div className="absolute left-4 bottom-4 text-lg text-left text-[#fba145]">
-                        See more with more stuff
+                </div>
+                <div className="w-1/4 relative">
+                    <div className="w-80 h-[550px] rounded-lg bg-[#f5f5ee] border border-black p-4">
+                        {checkboxOptions.map((option) => (
+                            <div key={option.id} className="mb-4">
+                                <input
+                                    type="checkbox"
+                                    id={option.id}
+                                    className="hidden"
+                                    checked={selectedFilters.includes(option.id)}
+                                    onChange={() => handleFilterSelection(option.id)}
+                                />
+                                <label htmlFor={option.id} className="cursor-pointer flex items-center gap-2 text-lg text-left text-black select-none">
+                                    <div className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center">
+                                        {selectedFilters.includes(option.id) && (
+                                            <div className="w-2 h-2 bg-[#84DCCF] rounded-full"></div>
+                                        )}
+                                    </div>
+                                    {option.label}
+                                </label>
+                            </div>
+                        ))}
+                        <hr className="border-t border-gray-300 mb-4" />
+                        <div className="absolute left-4 bottom-4 text-lg text-left text-[#fba145]">
+                            See more with more stuff
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,11 +110,14 @@ const StartupDirectory = () => {
 };
 
 const checkboxOptions = [
-    { id: 'topByRevenue', label: 'Top companies by revenue' },
-    { id: 'topByValuation', label: 'Top companies by valuation' },
-    { id: 'isHiring', label: 'Is hiring' },
-    { id: 'nonProfit', label: 'Non Profit' },
-    { id: 'womenFounded', label: 'Women Founded' },
+    { id: 'Technology', label: 'Technology' },
+    { id: 'Healthcare', label: 'Healthcare' },
+    { id: 'Finance', label: 'Finance' },
+    { id: 'Startup', label: 'Startup' },
+    { id: 'Innovation', label: 'Innovation' },
+    { id: 'Medical', label: 'Medical' },
+    { id: 'Fintech', label: 'Fintech' },
+    { id: 'Investment', label: 'Investment' },
     // Add more filter options here
 ];
 
