@@ -1,9 +1,12 @@
 import React from 'react'
+import Sidebar from './Sidebar'
 
 const StartupSchool = () => {
-  return (
-    <div>StartupSchool</div>
-  )
+    return (
+        <div>
+            <Sidebar/>
+        </div>
+    )
 }
 
 export default StartupSchool
