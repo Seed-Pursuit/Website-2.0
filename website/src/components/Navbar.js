@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo_seed_pursuit.png';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaCaretDown } from 'react-icons/fa'; // Example icon from react-icons
 
 const Navbar = () => {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
@@ -9,11 +10,32 @@ const Navbar = () => {
   const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
   const [isPursuitCoinDropdownOpen, setIsPursuitCoinDropdownOpen] = useState(false);
 
-  const closeDropdowns = () => {
-    setIsAboutDropdownOpen(false);
-    setIsCompaniesDropdownOpen(false);
-    setIsResourcesDropdownOpen(false);
-    setIsPursuitCoinDropdownOpen(false);
+  const openDropdown = (dropdownName) => {
+    // Close all dropdowns except the one specified
+    if (dropdownName !== 'about') setIsAboutDropdownOpen(false);
+    if (dropdownName !== 'companies') setIsCompaniesDropdownOpen(false);
+    if (dropdownName !== 'resources') setIsResourcesDropdownOpen(false);
+    if (dropdownName !== 'pursuit-coin') setIsPursuitCoinDropdownOpen(false);
+  };
+
+  const toggleAboutDropdown = () => {
+    setIsAboutDropdownOpen(!isAboutDropdownOpen);
+    openDropdown('about');
+  };
+
+  const toggleCompaniesDropdown = () => {
+    setIsCompaniesDropdownOpen(!isCompaniesDropdownOpen);
+    openDropdown('companies');
+  };
+
+  const toggleResourcesDropdown = () => {
+    setIsResourcesDropdownOpen(!isResourcesDropdownOpen);
+    openDropdown('resources');
+  };
+
+  const togglePursuitCoinDropdown = () => {
+    setIsPursuitCoinDropdownOpen(!isPursuitCoinDropdownOpen);
+    openDropdown('pursuit-coin');
   };
 
   return (
@@ -28,14 +50,10 @@ const Navbar = () => {
 
           <ul className="flex space-x-6 text-gray">
             <li>
-              <Link
-                to="/about"
-                className="flex"
-                onMouseEnter={() => setIsAboutDropdownOpen(true)}
-                onMouseLeave={closeDropdowns}
-              >
+              <div className="flex" onClick={toggleAboutDropdown}>
                 About
-              </Link>
+                <FaCaretDown />
+              </div>
               <AnimatePresence>
                 {isAboutDropdownOpen && (
                   <motion.div
@@ -70,14 +88,10 @@ const Navbar = () => {
               </AnimatePresence>
             </li>
             <li>
-              <Link
-                to="/companies"
-                className="flex"
-                onMouseEnter={() => setIsCompaniesDropdownOpen(true)}
-                onMouseLeave={closeDropdowns}
-              >
+              <div className="flex" onClick={toggleCompaniesDropdown}>
                 Companies
-              </Link>
+                <FaCaretDown />
+              </div>
               <AnimatePresence>
                 {isCompaniesDropdownOpen && (
                   <motion.div
@@ -106,24 +120,20 @@ const Navbar = () => {
               </AnimatePresence>
             </li>
             <li>
-              <Link to="/startup" className="flex" onMouseEnter={closeDropdowns}>
+              <Link to="/startup" className="flex">
                 Startup
               </Link>
             </li>
             <li>
-              <Link to="/find-co-founder" className="flex" onMouseEnter={closeDropdowns}>
+              <Link to="/find-co-founder" className="flex">
                 Find a co-founder
               </Link>
             </li>
             <li>
-              <Link
-                to="/library"
-                className="flex"
-                onMouseEnter={() => setIsResourcesDropdownOpen(true)}
-                onMouseLeave={closeDropdowns}
-              >
+              <div className="flex" onClick={toggleResourcesDropdown}>
                 Library
-              </Link>
+                <FaCaretDown />
+              </div>
               <AnimatePresence>
                 {isResourcesDropdownOpen && (
                   <motion.div
@@ -152,14 +162,10 @@ const Navbar = () => {
               </AnimatePresence>
             </li>
             <li>
-              <Link
-                to="/pursuit-coin"
-                className="flex"
-                onMouseEnter={() => setIsPursuitCoinDropdownOpen(true)}
-                onMouseLeave={closeDropdowns}
-              >
+              <div className="flex" onClick={togglePursuitCoinDropdown}>
                 Pursuit Coin
-              </Link>
+                <FaCaretDown />
+              </div>
               <AnimatePresence>
                 {isPursuitCoinDropdownOpen && (
                   <motion.div

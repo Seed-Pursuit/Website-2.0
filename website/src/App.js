@@ -4,12 +4,12 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div>
+    <div className="font-righteous">
       <Router>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element = {<Homepage/>} exact/>
-      </Routes>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Homepage />} exact />
+        </Routes>
       </Router>
     </div>
   );
