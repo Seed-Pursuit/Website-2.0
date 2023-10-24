@@ -1,65 +1,62 @@
-import React from 'react'
+import React from 'react';
 import Image from '../assets/image-5.png';
 
 const Hero2 = () => {
+
     return (
-        <div className='flex'>
-            <div>
-                <img src={Image} alt='' />
+        <div>
+            <div className="flex items-center justify-between">
+                <div className="w-1/2 pr-5">
+                <AnimatedImage />
+                </div>
+                <div className="w-1/2 pr-5 text-md">
+                    <TextRightBlock title="Unlock Your Funding Potential">
+                        Embrace the power of PursuitCoin to fund your innovative ideas
+                    </TextRightBlock>
+                    <TextRightBlock title="Join a Thriving Network">
+                        Connect with like-minded entrepreneurs, investors, and mentors
+                    </TextRightBlock>
+                    <TextRightBlock title="Transparency Matters">
+                        Experience real-time fund tracking and build trust with our blockchain technology
+                    </TextRightBlock>
+                    <TextRightBlock title="Your Success, Our Mission">
+                        We're dedicated to helping you achieve your business goals
+                    </TextRightBlock>
+                    <TextRightBlock title="Real Stories, Real Success">
+                        Read how others have leveraged Seed Pursuit for their business triumphs
+                    </TextRightBlock>
+                    <TextRightBlock title="Stay Informed">
+                        Keep up with the latest industry trends and updates right here
+                    </TextRightBlock>
+                </div>
             </div>
-            <div>
-                <p className="w-[849px] text-[35px] text-right">
-                    <span className="w-[849px] text-[35px] text-right text-black">“</span>
-                    <span className="w-[849px] text-[35px] text-right text-[#fb7a5a]">
-                        Unlock Your Funding Potential
-                    </span>
-                    <span className="w-[849px] text-[35px] text-right text-black">
-                        ”: Embrace the power of PursuitCoin to fund your innovative ideas
-                    </span>
-                </p>
-                <p className="w-[732px] text-[35px] text-right">
-                    <span className="w-[732px] text-[35px] text-right text-black">"</span>
-                    <span className="w-[732px] text-[35px] text-right text-[#fb7a5a]">Join a Thriving Network</span>
-                    <span className="w-[732px] text-[35px] text-right text-black">
-                        ": Connect with like-minded entrepreneurs, investors, and mentors
-                    </span>
-                    <br />
-                </p>
-                <p className="w-[628px] text-[35px] text-right">
-                    <span className="w-[628px] text-[35px] text-right text-black">"</span>
-                    <span className="w-[628px] text-[35px] text-right text-[#fb7a5a]">Transparency Matters</span>
-                    <span className="w-[628px] text-[35px] text-right text-black">
-                        ": Experience real-time fund tracking and build trust with our blockchain technology
-                    </span>
-                </p>
-                <p className="w-[593px] text-[35px] text-right">
-                    <span className="w-[593px] text-[35px] text-right text-black">"</span>
-                    <span className="w-[593px] text-[35px] text-right text-[#fb7a5a]">
-                        Your Success, Our Mission
-                    </span>
-                    <span className="w-[593px] text-[35px] text-right text-black">
-                        ": We're dedicated to helping you achieve your business goals
-                    </span>
-                </p>
-                <p className="w-[650px] text-[35px] text-right">
-                    <span className="w-[650px] text-[35px] text-right text-black">"</span>
-                    <span className="w-[650px] text-[35px] text-right text-[#fb7a5a]">
-                        Real Stories, Real Success
-                    </span>
-                    <span className="w-[650px] text-[35px] text-right text-black">
-                        ": Read how others have leveraged Seed Pursuit for their business triumphs
-                    </span>
-                </p>
-                <p className="w-[736px] text-[35px] text-right">
-                    <span className="w-[736px] text-[35px] text-right text-black">“</span>
-                    <span className="w-[736px] text-[35px] text-right text-[#fb7a5a]">Stay Informed</span>
-                    <span className="w-[736px] text-[35px] text-right text-black">
-                        ": Keep up with the latest industry trends and updates right here
-                    </span>
-                </p>
-            </div>
+
         </div>
-    )
+    );
 }
 
-export default Hero2
+const TextRightBlock = ({ title, children }) => {
+    return (
+        <p className="text-[28px] text-right text-[#333]"> 
+            <span className="text-[28px] text-black">“</span>
+            <span className="text-[28px] text-[#fb7a5a] font-bold">{title}</span> 
+            <span className="text-[28px] text-black">”:</span> {children}
+        </p>
+    );
+}
+
+const AnimatedImage = () => {
+    const animationStyle = {
+        animation: 'upDownAnimation 4s ease-in-out infinite', 
+    };
+
+    return (
+        <img
+            src={Image}
+            alt=""
+            className="w-full"
+            style={animationStyle}
+        />
+    );
+}
+export default Hero2;

@@ -29,15 +29,24 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className='justify-end flex-grow'>
-                    <img
-                        src={Image}
-                        alt=''
-                        className='w-full h-auto'
-                    />
+                    <AnimatedImage />
                 </div>
             </div>
         </div>
     );
 }
+const AnimatedImage = () => {
+    const animationStyle = {
+        animation: 'upDownAnimation 4s ease-in-out infinite',
+    };
 
+    return (
+        <img
+            src={Image}
+            alt=""
+            className="w-full"
+            style={animationStyle}
+        />
+    );
+}
 export default Hero;

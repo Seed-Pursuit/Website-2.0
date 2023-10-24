@@ -4,6 +4,8 @@ import Hero1 from "../components/Hero1";
 import Hero2 from "../components/Hero2";
 import TopCompanies from "../assets/top-companies.png";
 import Image from '../assets/Component.png';
+import Hero3 from "../components/Hero3";
+import Hero4 from "../components/Hero4";
 
 const Homepage = () => {
     return (
@@ -27,6 +29,8 @@ const Homepage = () => {
             <br />
             <Hero2 />
             {/* <img src={Image} alt=""/> */}
+            <Hero3 />
+            <Hero4/>
         </div>
     );
 };
