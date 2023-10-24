@@ -1,54 +1,206 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import RightArrow from '../../assets/Right Arrow.png';
-
 const StartupDirectory = () => {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [companyProfiles, setCompanyProfiles] = useState([
         {
             id: 1,
-            name: 'Company A',
+            name: 'Tech Innovators Inc.',
             tags: ['Technology', 'Startup', 'Innovation'],
-            description: 'Company A is a tech startup specializing in innovative solutions.',
+            description: 'We are pioneering the next generation of technology solutions.',
             location: 'San Francisco, CA',
-            founder: 'John Doe',
-            employees: 25,
-            website: 'https://www.companya.com',
+            founder: 'Alice Johnson',
+            employees: 30,
+            website: 'https://www.techinnovators.com',
+            image: 'https://source.unsplash.com/200x150/?logo/1',
         },
         {
             id: 2,
-            name: 'Company B',
+            name: 'HealthTech Solutions',
             tags: ['Healthcare', 'Innovation', 'Medical'],
-            description: 'Company B is a healthcare company focused on medical innovations.',
+            description: 'Revolutionizing healthcare with cutting-edge innovations.',
             location: 'New York, NY',
-            founder: 'Jane Smith',
-            employees: 50,
-            website: 'https://www.companyb.com',
+            founder: 'Bob Anderson',
+            employees: 60,
+            website: 'https://www.healthtechsolutions.com',
+            image: 'https://source.unsplash.com/200x150/?logo/2',
         },
         {
             id: 3,
-            name: 'Company C',
+            name: 'FinEdge Technologies',
             tags: ['Finance', 'Fintech', 'Investment'],
-            description: 'Company C is a fintech company offering investment solutions.',
+            description: 'Empowering investors with smart financial solutions.',
             location: 'Chicago, IL',
-            founder: 'Bob Johnson',
-            employees: 30,
-            website: 'https://www.companyc.com',
+            founder: 'Eva Smith',
+            employees: 45,
+            website: 'https://www.finedgetech.com',
+            image: 'https://source.unsplash.com/200x150/?logo/3',
         },
+        {
+            id: 4,
+            name: 'EduTech Visionaries',
+            tags: ['Education', 'EdTech', 'Innovation'],
+            description: 'Transforming education through digital learning platforms.',
+            location: 'Los Angeles, CA',
+            founder: 'David Wilson',
+            employees: 25,
+            website: 'https://www.edutechvisionaries.com',
+            image: 'https://source.unsplash.com/200x150/?logo/4',
+        },
+        {
+            id: 5,
+            name: 'GreenScape Innovations',
+            tags: ['Environment', 'Sustainability', 'GreenTech'],
+            description: 'Leading the way in sustainable technology and practices.',
+            location: 'Seattle, WA',
+            founder: 'Grace Turner',
+            employees: 40,
+            website: 'https://www.greenscapeinnovations.com',
+            image: 'https://source.unsplash.com/200x150/?logo/5',
+        },
+        {
+            id: 6,
+            name: 'TravelGenius',
+            tags: ['Travel', 'Tourism', 'Adventures'],
+            description: 'Explore the world with our travel planning expertise.',
+            location: 'Miami, FL',
+            founder: 'Chris Martinez',
+            employees: 20,
+            website: 'https://www.travelgenius.com',
+            image: 'https://source.unsplash.com/200x150/?logo/6',
+        },
+        {
+            id: 7,
+            name: 'DataDive Analytics',
+            tags: ['Data Science', 'Analytics', 'Big Data'],
+            description: 'Uncover valuable insights with our data analytics solutions.',
+            location: 'Austin, TX',
+            founder: 'Olivia Davis',
+            employees: 55,
+            website: 'https://www.datadiveanalytics.com',
+            image: 'https://source.unsplash.com/200x150/?logo/7',
+        },
+        {
+            id: 8,
+            name: 'AeroTech Innovations',
+            tags: ['Aviation', 'Aerospace', 'Technology'],
+            description: 'Pushing the boundaries of aerospace technology.',
+            location: 'Los Angeles, CA',
+            founder: 'Michael Adams',
+            employees: 75,
+            website: 'https://www.aerotechinnovations.com',
+            image: 'https://source.unsplash.com/200x150/?logo/8',
+        },
+        {
+            id: 9,
+            name: 'EcoSolutions Inc.',
+            tags: ['Environment', 'Eco-Friendly', 'Sustainability'],
+            description: 'Creating a sustainable and eco-friendly future for all.',
+            location: 'Portland, OR',
+            founder: 'Emma Green',
+            employees: 35,
+            website: 'https://www.ecosolutions.com',
+            image: 'https://source.unsplash.com/200x150/?logo/9',
+        },
+        {
+            id: 10,
+            name: 'FoodieTech Labs',
+            tags: ['FoodTech', 'Culinary', 'Innovation'],
+            description: 'Innovating the culinary world with technology.',
+            location: 'San Francisco, CA',
+            founder: 'Liam Baker',
+            employees: 40,
+            website: 'https://www.foodietechlabs.com',
+            image: 'https://source.unsplash.com/200x150/?logo/10',
+        },
+        {
+            id: 11,
+            name: 'SpaceWonders Exploration',
+            tags: ['Space', 'Exploration', 'Astronomy'],
+            description: 'Embarking on celestial journeys and discoveries.',
+            location: 'Houston, TX',
+            founder: 'Sophia Turner',
+            employees: 28,
+            website: 'https://www.spacewondersexploration.com',
+            image: 'https://source.unsplash.com/200x150/?logo/11',
+        },
+        {
+            id: 12,
+            name: 'MediConnect Health',
+            tags: ['HealthTech', 'Medical', 'Telemedicine'],
+            description: 'Connecting patients and healthcare professionals with telemedicine.',
+            location: 'Chicago, IL',
+            founder: 'Daniel Smith',
+            employees: 50,
+            website: 'https://www.mediconnecthealth.com',
+            image: 'https://source.unsplash.com/200x150/?logo/12',
+        },
+        {
+            id: 13,
+            name: 'RoboWorks Robotics',
+            tags: ['Robotics', 'Automation', 'AI'],
+            description: 'Transforming industries with advanced robotics and automation.',
+            location: 'Seattle, WA',
+            founder: 'Alexa Brown',
+            employees: 42,
+            website: 'https://www.roboworksrobotics.com',
+            image: 'https://source.unsplash.com/200x150/?logo/13',
+        },
+        {
+            id: 14,
+            name: 'EduPlay Learning',
+            tags: ['Education', 'EdTech', 'Learning Games'],
+            description: 'Making learning fun with interactive educational games.',
+            location: 'Boston, MA',
+            founder: 'Matthew Clark',
+            employees: 32,
+            website: 'https://www.eduplaylearning.com',
+            image: 'https://source.unsplash.com/200x150/?logo/14',
+        },
+        {
+            id: 15,
+            name: 'SecureShield Cybersecurity',
+            tags: ['Cybersecurity', 'Data Protection', 'Network Security'],
+            description: 'Protecting businesses from cyber threats and data breaches.',
+            location: 'San Diego, CA',
+            founder: 'Sophie White',
+            employees: 48,
+            website: 'https://www.secureshieldcybersecurity.com',
+            image: 'https://source.unsplash.com/200x150/?logo/15',
+        },
+        {
+            id: 16,
+            name: 'BioTech Innovations',
+            tags: ['Biotechnology', 'Research', 'Health'],
+            description: 'Advancing healthcare with groundbreaking biotech solutions.',
+            location: 'Cambridge, MA',
+            founder: 'William Harris',
+            employees: 60,
+            website: 'https://www.biotechinnovations.com',
+            image: 'https://source.unsplash.com/200x150/?logo/16',
+        },
+
     ]);
 
     const handleFilterSelection = (filter) => {
-        if (selectedFilters.includes(filter)) {
-            setSelectedFilters(selectedFilters.filter((item) => item !== filter));
-        } else {
+        const filterIndex = selectedFilters.findIndex(
+            (selectedFilter) => selectedFilter.value === filter.value && selectedFilter.type === filter.type
+        );
+
+        if (filterIndex === -1) {
             setSelectedFilters([...selectedFilters, filter]);
+        } else {
+            const updatedFilters = [...selectedFilters];
+            updatedFilters.splice(filterIndex, 1);
+            setSelectedFilters(updatedFilters);
         }
     };
 
     const applyFilters = (profile) => {
         return selectedFilters.every((filter) => {
             if (filter.type === 'tags') {
-                return profile.tags.includes(filter.value);
+                return filter.value === 'all' || profile.tags.includes(filter.value);
             }
             return true;
         });
@@ -75,6 +227,7 @@ const StartupDirectory = () => {
                     {filteredProfiles.map((profile) => (
                         <Link key={profile.id} to={`/company/${profile.id}`} className="no-underline">
                             <div className="mb-4 bg-white rounded-lg border p-4 cursor-pointer">
+                                <img src={profile.image} alt='' />
                                 <h2 className="text-xl text-black">{profile.name}</h2>
                                 <p className="text-gray-500">{profile.description}</p>
                                 <div className="flex flex-wrap mt-2">
@@ -84,6 +237,7 @@ const StartupDirectory = () => {
                                         </span>
                                     ))}
                                 </div>
+
                                 <p className="text-gray-500">Location: {profile.location}</p>
                                 <p className="text-gray-500">Founder: {profile.founder}</p>
                                 <p className="text-gray-500">Employees: {profile.employees}</p>
@@ -106,7 +260,6 @@ const StartupDirectory = () => {
                                             <input
                                                 type="checkbox"
                                                 id={option.value}
-                                                className="hidden"
                                                 checked={selectedFilters.some((filter) => filter.value === option.value)}
                                                 onChange={() => handleFilterSelection({ ...filterOption, value: option.value, type: 'tags' })}
                                             />
@@ -132,71 +285,70 @@ const filterOptions = [
     {
         label: 'Industry', options: [
             { label: 'All Industries', value: 'all' },
-            { label: 'Education', value: 'education' },
-            { label: 'Fintech', value: 'fintech' },
-            { label: 'Gaming', value: 'gaming' },
-            { label: 'Healthcare', value: 'healthcare' },
-            { label: 'Real Estate and Construction', value: 'realEstate' },
-            { label: 'Aviation and Space', value: 'aviation' },
-            { label: 'Government', value: 'government' },
-            { label: 'Transportation', value: 'transportation' },
-            { label: 'Travel and Tourism', value: 'travel' },
-            // Add more options here
+            { label: 'Education', value: 'Education' },
+            { label: 'Fintech', value: 'Fintech' },
+            { label: 'Gaming', value: 'Gaming' },
+            { label: 'Healthcare', value: 'Healthcare' },
+            { label: 'Real Estate and Construction', value: 'Real Estate' },
+            { label: 'Aviation and Space', value: 'Aviation' },
+            { label: 'Government', value: 'Government' },
+            { label: 'Transportation', value: 'Transportation' },
+            { label: 'Travel and Tourism', value: 'Travel' },
+            { label: 'Blockchain', value: 'Blockchain' },
+            { label: 'Cybersecurity', value: 'Cybersecurity' },
         ]
     },
     {
         label: 'Target Customer', options: [
             { label: 'All', value: 'all' },
-            { label: 'B2B', value: 'b2b' },
-            { label: 'B2G', value: 'b2g' },
-            { label: 'C2B', value: 'c2b' },
-            { label: 'B2C', value: 'b2c' },
-            { label: 'F2C', value: 'f2c' },
-            { label: 'G2C', value: 'g2c' },
-            { label: 'C2C', value: 'c2c' },
-            { label: 'DTC', value: 'dtc' },
-            { label: 'G2B', value: 'g2b' },
-            { label: 'Non-Profit', value: 'nonProfit' },
-            { label: 'Co-Ops', value: 'coOps' },
-            { label: 'Franchise', value: 'franchise' },
-            // Add more options here
+            { label: 'B2B', value: 'B2B' },
+            { label: 'B2G', value: 'B2G' },
+            { label: 'C2B', value: 'C2B' },
+            { label: 'B2C', value: 'B2C' },
+            { label: 'F2C', value: 'F2C' },
+            { label: 'G2C', value: 'G2C' },
+            { label: 'C2C', value: 'C2C' },
+            { label: 'DTC', value: 'DTC' },
+            { label: 'G2B', value: 'G2B' },
+            { label: 'Non-Profit', value: 'Non-Profit' },
+            { label: 'Co-Ops', value: 'Co-Ops' },
+            { label: 'Franchise', value: 'Franchise' },
         ]
     },
     {
         label: 'Region', options: [
             { label: 'Anywhere', value: 'anywhere' },
-            { label: 'Remote', value: 'remote' },
-            { label: 'Asia', value: 'asia' },
-            { label: 'Africa', value: 'africa' },
-            { label: 'America', value: 'america' },
-            { label: 'Antarctica', value: 'antarctica' },
-            { label: 'Europe', value: 'europe' },
-            { label: 'Australia', value: 'australia' },
-            // Add more options here
+            { label: 'Remote', value: 'Remote' },
+            { label: 'Asia', value: 'Asia' },
+            { label: 'Africa', value: 'Africa' },
+            { label: 'America', value: 'America' },
+            { label: 'Antarctica', value: 'Antarctica' },
+            { label: 'Europe', value: 'Europe' },
+            { label: 'Australia', value: 'Australia' },
         ]
     },
     {
         label: 'Technologies', options: [
             { label: 'All Tags', value: 'all' },
-            { label: 'Analytics', value: 'analytics' },
-            { label: 'Web3', value: 'web3' },
-            { label: 'Games', value: 'games' },
-            { label: 'SaaS', value: 'saas' },
-            { label: 'Robotics', value: 'robotics' },
-            { label: 'AI/ML', value: 'aiMl' },
-            { label: 'Infrastructure', value: 'infrastructure' },
-            { label: 'DevOps', value: 'devops' },
-            // Add more options here
+            { label: 'Analytics', value: 'Analytics' },
+            { label: 'Web3', value: 'webWeb33' },
+            { label: 'Games', value: 'Games' },
+            { label: 'SaaS', value: 'SaaS' },
+            { label: 'Robotics', value: 'Robotics' },
+            { label: 'AI/ML', value: 'AI/ML' },
+            { label: 'Infrastructure', value: 'Infrastructure' },
+            { label: 'DevOps', value: 'DevOps' },
+            { label: 'Blockchain', value: 'Blockchain' },
+            { label: 'Cybersecurity', value: 'Cybersecurity' },
         ]
     },
     {
         label: 'Status', options: [
             { label: 'All States', value: 'all' },
-            { label: 'Active', value: 'active' },
-            { label: 'Public', value: 'public' },
-            { label: 'Acquired', value: 'acquired' },
-            { label: 'Inactive', value: 'inactive' },
-            // Add more options here
+            { label: 'Active', value: 'Active' },
+            { label: 'Public', value: 'Public' },
+            { label: 'Acquired', value: 'Acquired' },
+            { label: 'Inactive', value: 'Inactive' },
         ]
     },
     {
@@ -207,7 +359,6 @@ const filterOptions = [
             { label: '51-100', value: '51-100' },
             { label: '101-500', value: '101-500' },
             { label: '500+', value: '500+' },
-            // Add more options here
         ]
     },
     {
@@ -218,7 +369,6 @@ const filterOptions = [
             { label: '$10M+', value: 10000000 },
             { label: '$50M+', value: 50000000 },
             { label: '$100M+', value: 100000000 },
-            // Add more options here
         ]
     },
     {
@@ -229,7 +379,6 @@ const filterOptions = [
             { label: '$10M+', value: 10000000 },
             { label: '$50M+', value: 50000000 },
             { label: '$100M+', value: 100000000 },
-            // Add more options here
         ]
     },
     {
