@@ -20,6 +20,16 @@ import HackersNews from "./pages/resources/HackersNews";
 import Library from "./pages/lib/Library";
 import StartupProfile from "./pages/companies/StartupProfile";
 import Profile from "./pages/Profile";
+import MyProfile from "./pages/startup_school/MyProfile";
+import Dashboard from "./pages/startup_school/Dashboard";
+import DiscoverProfiles from "./pages/startup_school/DiscoverProfiles";
+import Inbox from "./pages/startup_school/Inbox";
+import ReadTheGuide from "./pages/startup_school/ReadTheGuide";
+import CourseOverview from "./pages/startup_school/CourseOverview";
+import Curriculum from "./pages/startup_school/Curriculum";
+import WeeklyUpdates from "./pages/startup_school/WeeklyUpdates";
+import Settings from "./pages/startup_school/Settings";
+import Help from "./pages/startup_school/Help";
 
 function App() {
   return (
@@ -47,8 +57,19 @@ function App() {
           <Route path="/library" element={<Library />} exact />
           <Route path="/company/:id" element={<StartupProfile/>} />
           <Route path="/profile" element={<Profile/>} />
-          {/* <Route path="/apply" element={<Apply />} exact /> */}
-          {/* <Route path="/apply" element={<Apply />} exact /> */}
+          <Route path="/my-profile" element={<MyProfile />} exact />
+          <Route path="/discover-profiles" element={<DiscoverProfiles />} exact />
+          <Route path="/inbox" element={<Inbox />} exact />
+          <Route path="/read-the-guide" element={<ReadTheGuide />} exact />
+          <Route path="/course-overview" element={<CourseOverview />} exact />
+          <Route path="/curriculum" element={<Curriculum />} exact />
+          <Route path="/weekly-updates" element={<WeeklyUpdates />} exact />
+          <Route path="/curriculum" element={<Curriculum />} exact />
+          <Route path="/sp-library" element={<Library />} exact />
+          <Route path="/settings" element={<Settings />} exact />
+          <Route path="/sp-library" element={<Library />} exact />
+          <Route path="/help" element={<Help />} exact />
+          <Route path="/dashboard" element={<Dashboard />} exact />
 
         </Routes>
         <Footer />
