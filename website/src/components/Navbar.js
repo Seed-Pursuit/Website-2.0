@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo_seed_pursuit.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCaretDown } from 'react-icons/fa';
-import { useAuth0 } from '@auth0/auth0-react';
+import { User, useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
     const { user, isAuthenticated, loginWithPopup, logout } = useAuth0();
@@ -43,10 +43,10 @@ const Navbar = () => {
 
     const toggleProfileDropdown = () => {
         if (!isAuthenticated) {
-            loginWithPopup(); 
+            loginWithPopup();
         } else {
-            setIsProfileDropdownOpen(!isProfileDropdownOpen);
             openDropdown('profile');
+            setIsProfileDropdownOpen(!isProfileDropdownOpen);
         }
     };
 
@@ -142,8 +142,13 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex" onClick={toggleResourcesDropdown}>
+                            <Link to="/library" className="flex">
                                 Library
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="flex" onClick={toggleResourcesDropdown}>
+                                Resources
                                 <FaCaretDown />
                             </Link>
                             <AnimatePresence>
@@ -204,18 +209,20 @@ const Navbar = () => {
                         <li>
                             <Link className="flex" onClick={toggleProfileDropdown}>
                                 {isAuthenticated ? (
-                                    <div>
-                                        <img
-                                            src={user.picture}
-                                            alt={user.name}
-                                            className="w-10 h-10 rounded-full"
-                                        />
-                                        <FaCaretDown />
+                                    <div style={{ position: 'relative' }}>
+                                        <div className='flex'>
+                                            <img
+                                                src={user.picture}
+                                                alt={user.name}
+                                                className="w-10 h-10 rounded-full"
+                                            />
+                                            <p className='p-3'>{user.name}</p>
+                                            {/* <FaCaretDown  style={{ position: 'absolute', top: '50%', right: '10', transform: 'translateY(-50%)' }} /> */}
+                                        </div>
                                     </div>
                                 ) : (
                                     'Login'
                                 )}
-                                <FaCaretDown />
                             </Link>
                             <AnimatePresence>
                                 {isProfileDropdownOpen && isAuthenticated && (
@@ -225,8 +232,8 @@ const Navbar = () => {
                                         exit={{ opacity: 0, y: -10 }}
                                         transition={{ duration: 0.2 }}
                                         className="absolute mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg p-2"
+                                        style={{ zIndex: 1000 }}
                                     >
-                                        {/* Add profile settings options here */}
                                         <ul className="py-2 space-y-2">
                                             <li>
                                                 <Link to="/profile">Profile Settings</Link>

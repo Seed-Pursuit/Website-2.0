@@ -5,7 +5,6 @@ const videoUrls = [
   'videoId1',
   'videoId2',
   'videoId3',
-  'videoId4',
 ];
 
 const Hero4 = () => {
@@ -25,8 +24,8 @@ const Hero4 = () => {
     <div>
       <p className="text-3xl font-bold text-center text-black mb-8">The Latest from Seed Pursuit</p>
       <div className="flex gap-8">
-        {Array.from({ length: 4 }, (_, i) => (
-          <div key={i} className="w-[340px] h-[272px] relative">
+        {Array.from({ length: 3}, (_, i) => (
+          <div key={i} className="h-[272px] relative">
             <div className="w-full h-[236px] rounded-lg overflow-hidden border border-gray-300 shadow-md">
               <YouTube videoId={getRandomVideoUrl()} opts={opts} className="w-full h-full" />
             </div>

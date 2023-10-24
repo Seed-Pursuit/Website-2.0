@@ -1,11 +1,12 @@
 import React from 'react'
 import Logo from '../assets/logo_seed_pursuit.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
         <div>
             <div className='py-20'></div>
-            <div className="w-[1280px] h-[594px] relative">
+            <div className="h-[594px] relative">
                 <div className="w-[1280px] h-[594px] absolute left-0 top-0">
                     <div className="w-[272.25px] h-[564.3px] absolute left-[937.59px] top-[-1px]" />
                     <div className="w-[1280px] h-[553.6px] absolute left-[-1px] top-[-1px] bg-[#312f2f]" />
@@ -310,7 +311,7 @@ const Footer = () => {
                             Programs
                         </p>
                         <p className="w-[204px] absolute left-[223px] top-[78px] text-base text-left text-white">
-                            <span className="w-[204px] text-base text-left text-white">SP Program</span>
+                            <Link to="what_happes_at_sp">                            <span className="w-[204px] text-base text-left text-white">SP Program</span></Link>
                             <br />
                             <span className="w-[204px] text-base text-left text-white">Startup School</span>
                             <br />

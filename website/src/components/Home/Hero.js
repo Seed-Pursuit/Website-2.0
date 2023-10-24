@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
-        <div className='py-16'>
+        <div className='py-20'>
             <div className="bg-[#ffede1] min-h-screen flex">
                 <div className='px-5 py-10'>
                     <p className="text-[90px] text-left">
@@ -28,7 +28,7 @@ const Hero = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='justify-end flex-grow'>
+                <div className='justify-end flex-grow py-10'>
                     <AnimatedImage />
                 </div>
             </div>
@@ -45,7 +45,7 @@ const AnimatedImage = () => {
             src={Image}
             alt=""
             className="w-full"
-            style={animationStyle}
+            // style={animationStyle}
         />
     );
 }
