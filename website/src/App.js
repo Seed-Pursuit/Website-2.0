@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="font-righteous">
+    <div className="font-righteous bg-[#f9fbf2]">
       <Router>
         <Navbar />
         <Routes>
