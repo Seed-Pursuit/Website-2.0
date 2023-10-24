@@ -18,6 +18,8 @@ import StartupSchool from "./pages/find_a_co_founder/StartupSchool";
 import Newsletter from "./pages/resources/Newsletter";
 import HackersNews from "./pages/resources/HackersNews";
 import Library from "./pages/lib/Library";
+import StartupProfile from "./pages/companies/StartupProfile";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -43,6 +45,8 @@ function App() {
           <Route path="/newsletter" element={<Newsletter />} exact />
           <Route path="/hackers_news" element={<HackersNews />} exact />
           <Route path="/library" element={<Library />} exact />
+          <Route path="/company/:id" element={<StartupProfile/>} />
+          <Route path="/profile" element={<Profile/>} />
           {/* <Route path="/apply" element={<Apply />} exact /> */}
           {/* <Route path="/apply" element={<Apply />} exact /> */}
 
