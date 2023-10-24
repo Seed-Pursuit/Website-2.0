@@ -47,7 +47,7 @@ function App() {
           {/* <Route path="/apply" element={<Apply />} exact /> */}
 
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
