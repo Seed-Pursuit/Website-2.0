@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Image1 from '../assets/testimonails/image1.png';
-import Image2 from '../assets/testimonails/image2.png';
-import Image3 from '../assets/testimonails/image3.png';
-import Image4 from '../assets/testimonails/image4.png';
-import Image5 from '../assets/testimonails/image5.png';
+import Image1 from '../../assets/testimonails/image1.png';
+import Image2 from '../../assets/testimonails/image2.png';
+import Image3 from '../../assets/testimonails/image3.png';
+import Image4 from '../../assets/testimonails/image4.png';
+import Image5 from '../../assets/testimonails/image5.png';
 
 
 

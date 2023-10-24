@@ -3,18 +3,22 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo_seed_pursuit.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCaretDown } from 'react-icons/fa';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
+    const { user, isAuthenticated, loginWithPopup, logout } = useAuth0();
     const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
     const [isCompaniesDropdownOpen, setIsCompaniesDropdownOpen] = useState(false);
     const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
     const [isPursuitCoinDropdownOpen, setIsPursuitCoinDropdownOpen] = useState(false);
+    const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
     const openDropdown = (dropdownName) => {
         if (dropdownName !== 'about') setIsAboutDropdownOpen(false);
         if (dropdownName !== 'companies') setIsCompaniesDropdownOpen(false);
         if (dropdownName !== 'resources') setIsResourcesDropdownOpen(false);
         if (dropdownName !== 'pursuit-coin') setIsPursuitCoinDropdownOpen(false);
+        if (dropdownName !== 'profile') setIsProfileDropdownOpen(false);
     };
 
     const toggleAboutDropdown = () => {
@@ -35,6 +39,15 @@ const Navbar = () => {
     const togglePursuitCoinDropdown = () => {
         setIsPursuitCoinDropdownOpen(!isPursuitCoinDropdownOpen);
         openDropdown('pursuit-coin');
+    };
+
+    const toggleProfileDropdown = () => {
+        if (!isAuthenticated) {
+            loginWithPopup(); 
+        } else {
+            setIsProfileDropdownOpen(!isProfileDropdownOpen);
+            openDropdown('profile');
+        }
     };
 
     return (
@@ -187,6 +200,47 @@ const Navbar = () => {
                             </AnimatePresence>
                         </li>
                     </ul>
+                    <ul className="flex space-x-6 text-gray">
+                        <li>
+                            <Link className="flex" onClick={toggleProfileDropdown}>
+                                {isAuthenticated ? (
+                                    <div>
+                                        <img
+                                            src={user.picture}
+                                            alt={user.name}
+                                            className="w-10 h-10 rounded-full"
+                                        />
+                                        <FaCaretDown />
+                                    </div>
+                                ) : (
+                                    'Login'
+                                )}
+                                <FaCaretDown />
+                            </Link>
+                            <AnimatePresence>
+                                {isProfileDropdownOpen && isAuthenticated && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -10 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="absolute mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg p-2"
+                                    >
+                                        {/* Add profile settings options here */}
+                                        <ul className="py-2 space-y-2">
+                                            <li>
+                                                <Link to="/profile">Profile Settings</Link>
+                                            </li>
+                                            <li>
+                                                <button onClick={() => logout()}>Logout</button>
+                                            </li>
+                                        </ul>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </li>
+                    </ul>
+
                     <div>
                         <div className="px-4"></div>
                     </div>
