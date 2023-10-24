@@ -30,6 +30,8 @@ import Curriculum from "./pages/startup_school/Curriculum";
 import WeeklyUpdates from "./pages/startup_school/WeeklyUpdates";
 import Settings from "./pages/startup_school/Settings";
 import Help from "./pages/startup_school/Help";
+import FamiliarAskedQuestions from './pages/about/FamiliarAskedQue';
+
 
 function App() {
   return (
@@ -42,9 +44,9 @@ function App() {
           <Route path="/what_happens_at_sp" element={<WhatHappensAtSP />} exact />
           <Route path="/apply" element={<Apply />} exact />
           <Route path="/interview_guide" element={<InterviewGuide />} exact />
-          <Route path="/faq" element={<faq />} exact />
           <Route path="/people" element={<People />} exact />
           <Route path="/blogs" element={<Blogs />} exact />
+          <Route path="/faq" element={<FamiliarAskedQuestions />} exact />
           <Route path="/startup_directory" element={<StartupDirectory />} exact />
           <Route path="/top_companies" element={<TopCompanies />} exact />
           <Route path="/founder_directory" element={<FounderDirectory />} exact />
