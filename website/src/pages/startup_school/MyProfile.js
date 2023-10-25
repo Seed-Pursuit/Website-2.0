@@ -16,6 +16,13 @@ const MyProfile = () => {
       pronouns: '',
       bio: '',
       profileImage: null,
+      linkedin: '',
+      location: '',
+      impressiveAccomplishment: '',
+      employment: '',
+      isProgrammer: '',
+      schedulingUrl: '',
+      additionalInfo: '',
     },
     moreInfo: {},
     coFounderPreference: {},
@@ -58,7 +65,6 @@ const MyProfile = () => {
           console.error('Error updating profile:', error);
         });
     } else {
-      // Create a new section if it doesn't exist
       set(userRef, { [activeSection]: profileData[activeSection] })
         .then(() => {
           setConfirmationMessage('Profile section added successfully.');
@@ -75,9 +81,7 @@ const MyProfile = () => {
       <Sidebar />
 
       <div className="flex-1 p-20">
-        {confirmationMessage && (
-          <div className="text-yellow-500 text-2xl font-bold">{confirmationMessage}</div>
-        )}
+
         <BasicInfoSection
           profileData={profileData.basic}
           setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
@@ -89,6 +93,9 @@ const MyProfile = () => {
         >
           Save
         </button>
+        {confirmationMessage && (
+          <div className="text-yellow-500 text-2xl font-bold">{confirmationMessage}</div>
+        )}
       </div>
     </div>
   );
@@ -133,6 +140,17 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
           value={profileData.email}
           onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
           className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-300">Bio</label>
+        <textarea
+          name="bio"
+          placeholder="Write a short bio about yourself..."
+          value={profileData.bio}
+          onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
         />
       </div>
       <div className="mb-4">
@@ -211,6 +229,7 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
           className="p-2 border border-gray-300 rounded w-full h-24"
         />
       </div>
+      <h3 className="text-2xl font-semibold mb-4">Basic Information</h3>
     </div>
   );
 };
