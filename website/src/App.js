@@ -57,8 +57,8 @@ function App() {
           <Route path="/newsletter" element={<Newsletter />} exact />
           <Route path="/hackers_news" element={<HackersNews />} exact />
           <Route path="/library" element={<Library />} exact />
-          <Route path="/company/:id" element={<StartupProfile/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/company/:id" element={<StartupProfile />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/my-profile" element={<MyProfile />} exact />
           <Route path="/discover-profiles" element={<DiscoverProfiles />} exact />
           <Route path="/inbox" element={<Inbox />} exact />
@@ -72,7 +72,6 @@ function App() {
           <Route path="/sp-library" element={<Library />} exact />
           <Route path="/help" element={<Help />} exact />
           <Route path="/dashboard" element={<Dashboard />} exact />
-
         </Routes>
         <Footer />
       </Router>

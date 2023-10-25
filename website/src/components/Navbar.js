@@ -194,10 +194,10 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <Link to="/pursuit-coin-grants">View Grants</Link>
+                                                <Link to="https://pursuit-coin.vercel.app/">View Grants</Link>
                                             </li>
                                             <li>
-                                                <Link to="/apply-grant">Apply for a Grant</Link>
+                                                <Link to="/https://pursuit-coin.vercel.app/">Apply for a Grant</Link>
                                             </li>
                                         </ul>
                                     </motion.div>
