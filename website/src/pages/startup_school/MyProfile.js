@@ -7,7 +7,6 @@ import Sidebar from '../find_a_co_founder/Sidebar';
 const MyProfile = () => {
   const db = getDatabase(app);
   const { user, isAuthenticated } = useAuth0();
-
   const [profileData, setProfileData] = useState({
     basic: {
       firstName: '',
@@ -16,21 +15,13 @@ const MyProfile = () => {
       pronouns: '',
       bio: '',
       profileImage: null,
-    },
-    moreInfo: {
-      moreInfo:'',
       interestedIdeas: '',
-      committedToIdea:'',
+      committedToIdea: '',
+      coFounderPreferences:"",
     },
-    coFounderPreference: {},
   });
 
-  const [activeSection, setActiveSection] = useState('basic');
   const [confirmationMessage, setConfirmationMessage] = useState('');
-
-  const handleSectionChange = (section) => {
-    setActiveSection(section);
-  };
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -49,19 +40,12 @@ const MyProfile = () => {
     }
   }, [isAuthenticated, user.sub]);
 
-  const handleNext = () => {
-    const sections = ['basic', 'moreInfo', 'coFounderPreference'];
-    const currentIndex = sections.indexOf(activeSection);
-    if (currentIndex < sections.length - 1) {
-      const nextSection = sections[currentIndex + 1];
-      setActiveSection(nextSection);
-    }
-  };
+
 
   const handleSubmit = () => {
     if (isAuthenticated) {
       const userRef = ref(db, `profiles/${user.sub}`);
-      update(userRef, { [activeSection]: profileData[activeSection] })
+      update(userRef, { profileData })
         .then(() => {
           setConfirmationMessage('Profile updated successfully.');
         })
@@ -73,38 +57,19 @@ const MyProfile = () => {
 
   return (
     <div className="flex p-20">
-      <Sidebar activeSection={activeSection} handleSectionChange={handleSectionChange} />
-
+      <Sidebar />
       <div className="flex-1 p-4">
         {confirmationMessage && (
           <div className="text-yellow-500 text-2xl font-bold">{confirmationMessage}</div>
         )}
 
-        {activeSection === 'basic' && (
-          <BasicInfoSection
-            profileData={profileData.basic}
-            setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
-          />
-        )}
-        {activeSection === 'moreInfo' && profileData.moreInfo && (
-          <MoreInfoSection
-            profileData={profileData.moreInfo}
-            setProfileData={(data) => setProfileData({ ...profileData, moreInfo: data })}
-          />
-        )}
+        <BasicInfoSection
+          profileData={profileData.basic}
+          setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
+        />
 
-        {activeSection === 'coFounderPreference' && (
-          <CoFounderPreferenceSection
-            profileData={profileData.coFounderPreference}
-            setProfileData={(data) => setProfileData({ ...profileData, coFounderPreference: data })}
-          />
-        )}
-        {activeSection === 'profilePreview' && <ProfilePreviewSection profileData={profileData} />}
-
-        <div className="flex justify-between mt-4">
-          <button onClick={handleNext} className="bg-blue-500 text-white py-2 px-4 rounded">
-            Next
-          </button>
+        {/* Button for saving the entire form */}
+        <div className="flex justify-center mt-4">
           <button onClick={handleSubmit} className="bg-yellow-500 text-white py-2 px-4 rounded">
             Save
           </button>
@@ -281,261 +246,5 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
   );
 };
 
-const MoreInfoSection = ({ profileData, setProfileData }) => {
-  // Function to handle changes in responsibilities
-  const handleResponsibilityChange = (responsibility, isChecked) => {
-    if (isChecked) {
-      setProfileData((prevData) => ({
-        ...prevData,
-        responsibilities: [...prevData.responsibilities, responsibility],
-      }));
-    } else {
-      setProfileData((prevData) => ({
-        ...prevData,
-        responsibilities: prevData.responsibilities.filter((r) => r !== responsibility),
-      }));
-    }
-  };
-
-  // Function to handle changes in interests
-  const handleInterestChange = (interest, isChecked) => {
-    if (isChecked) {
-      setProfileData((prevData) => ({
-        ...prevData,
-        interests: [...prevData.interests, interest],
-      }));
-    } else {
-      setProfileData((prevData) => ({
-        ...prevData,
-        interests: prevData.interests.filter((i) => i !== interest),
-      }));
-    }
-  };
-
-
-  return (
-    <div className='p-20'>
-      <div className="w-[702px] h-[2363px] rounded-[10px] bg-[#f9fbf2] border border-black" />
-      <p className="text-lg text-left text-black">What are some ideas you're interested in pursuing?</p>
-      <div>
-        <input
-          type="text"
-          name="interestedIdeas"
-          placeholder="Enter ideas you're interested in"
-          value={profileData.interestedIdeas}
-          onChange={(e) => setProfileData({ ...profileData, interestedIdeas: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
-      <p className="text-[45px] text-left text-black">More About you</p>
-      <div className="w-[618px] h-[54px]">
-        <input
-          type="radio"
-          name="committedToIdea"
-          value="yes"
-          checked={profileData.committedToIdea === 'yes'}
-          onChange={(e) => setProfileData({ ...profileData, committedToIdea: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">
-          Yes, I'm committed to an idea and I want a co-founder who can help me build it
-        </label>
-      </div>
-      <div className="w-[618px] h-[27px]">
-        <input
-          type="radio"
-          name="committedToIdea"
-          value="exploring"
-          checked={profileData.committedToIdea === 'exploring'}
-          onChange={(e) => setProfileData({ ...profileData, committedToIdea: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">
-          I have some ideas, but I'm also open to exploring other ideas
-        </label>
-      </div>
-      <div className="w-[618px] h-[54px]">
-        <input
-          type="radio"
-          name="committedToIdea"
-          value="no"
-          checked={profileData.committedToIdea === 'no'}
-          onChange={(e) => setProfileData({ ...profileData, committedToIdea: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">
-          No, I could help a co-founder with their existing idea or explore new ideas together
-        </label>
-      </div>
-      <p className="text-lg text-left">
-        <span className="text-lg text-left text-black">Do you already have a co-founder?</span>
-      </p>
-      <div className="w-[152px] h-[27px]">
-        <input
-          type="radio"
-          name="hasCoFounder"
-          value="yes"
-          checked={profileData.hasCoFounder === 'yes'}
-          onChange={(e) => setProfileData({ ...profileData, hasCoFounder: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">Yes</label>
-      </div>
-      <div className="w-[152px] h-[27px]">
-        <input
-          type="radio"
-          name="hasCoFounder"
-          value="no"
-          checked={profileData.hasCoFounder === 'no'}
-          onChange={(e) => setProfileData({ ...profileData, hasCoFounder: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">No</label>
-      </div>
-      <p className="text-lg text-left">
-        <span className="text-lg text-left text-black">
-          When do you want to start working on a startup full-time?
-        </span>
-      </p>
-      <p className="text-xs text-left text-black">
-        i.e. leave your job / school to be a full-time founder
-      </p>
-      <div className="w-[618px] h-[27px]">
-        <input
-          type="radio"
-          name="fullTimeTiming"
-          value="alreadyFullTime"
-          checked={profileData.fullTimeTiming === 'alreadyFullTime'}
-          onChange={(e) => setProfileData({ ...profileData, fullTimeTiming: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">I'm already full-time on my startup</label>
-      </div>
-      <div className="w-[618px] h-[27px]">
-        <input
-          type="radio"
-          name="fullTimeTiming"
-          value="readyToGo"
-          checked={profileData.fullTimeTiming === 'readyToGo'}
-          onChange={(e) => setProfileData({ ...profileData, fullTimeTiming: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">
-          I'm ready to go full-time as soon as I meet the right co-founder
-        </label>
-      </div>
-      <div className="w-[618px] h-[27px]">
-        <input
-          type="radio"
-          name="fullTimeTiming"
-          value="nextYear"
-          checked={profileData.fullTimeTiming === 'nextYear'}
-          onChange={(e) => setProfileData({ ...profileData, fullTimeTiming: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">I'm planning to go full-time in the next year</label>
-      </div>
-      <div className="w-[618px] h-[27px]">
-        <input
-          type="radio"
-          name="fullTimeTiming"
-          value="noSpecificPlans"
-          checked={profileData.fullTimeTiming === 'noSpecificPlans'}
-          onChange={(e) => setProfileData({ ...profileData, fullTimeTiming: e.target.value })}
-        />
-        <label className="ml-2 text-lg text-left text-black">I don't have any specific plans yet</label>
-      </div>
-      <p className="text-lg text-left">
-        <span className="text-lg text-left text-black">Which areas of a startup are you willing to take responsibility?</span>
-      </p>
-      <div>
-        <input
-          type="checkbox"
-          name="responsibilities"
-          value="product"
-          checked={profileData.responsibilities.includes('product')}
-          onChange={(e) => handleResponsibilityChange('product', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">Product</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          name="responsibilities"
-          value="engineering"
-          checked={profileData.responsibilities.includes('engineering')}
-          onChange={(e) => handleResponsibilityChange('engineering', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">Engineering</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          name="responsibilities"
-          value="design"
-          checked={profileData.responsibilities.includes('design')}
-          onChange={(e) => handleResponsibilityChange('design', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">Design</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          name="responsibilities"
-          value="salesMarketing"
-          checked={profileData.responsibilities.includes('salesMarketing')}
-          onChange={(e) => handleResponsibilityChange('salesMarketing', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">Sales & Marketing</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          name="responsibilities"
-          value="operations"
-          checked={profileData.responsibilities.includes('operations')}
-          onChange={(e) => handleResponsibilityChange('operations', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">Operations</label>
-      </div>
-      <p className="text-lg text-left">
-        <span className="text-lg text-left text-black">Which topics and industries are you interested in?</span>
-      </p>
-      <div>
-        <input
-          type="checkbox"
-          name="interests"
-          value="agriculture"
-          checked={profileData.interests.includes('agriculture')}
-          onChange={(e) => handleInterestChange('agriculture', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">Agriculture</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          name="interests"
-          value="ai"
-          checked={profileData.interests.includes('ai')}
-          onChange={(e) => handleInterestChange('ai', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">AI</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          name="interests"
-          value="design"
-          checked={profileData.interests.includes('design')}
-          onChange={(e) => handleInterestChange('design', e.target.checked)}
-        />
-        <label className="ml-2 text-base text-left text-black">Design</label>
-      </div>
-      {/* Continue with more interests and other input fields */}
-    </div>
-  );
-};
-
-
-const CoFounderPreferenceSection = ({ profileData, setProfileData }) => {
-  // Render and edit co-founder preferences fields here
-};
-
-const ProfilePreviewSection = ({ profileData }) => {
-  // Display a preview of the user's profile based on the data
-  // Update the code based on your specific profile display
-};
 
 export default MyProfile;
