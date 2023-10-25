@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { app } from '../../db/Firebase';
-import { getDatabase, ref, update } from 'firebase/database';
+import { get, getDatabase, ref, set, update } from 'firebase/database';
 import { useAuth0 } from '@auth0/auth0-react';
 import Sidebar from '../find_a_co_founder/Sidebar';
 
@@ -13,15 +13,12 @@ const MyProfile = () => {
       firstName: '',
       lastName: '',
       email: user.email,
-      // email: '',
       pronouns: '',
       bio: '',
       profileImage: null,
     },
-    moreInfo: {
-    },
-    coFounderPreference: {
-    },
+    moreInfo: {},
+    coFounderPreference: {},
   });
 
   const [activeSection, setActiveSection] = useState('basic');
@@ -31,48 +28,60 @@ const MyProfile = () => {
     setActiveSection(section);
   };
 
-  const handleSubmit = () => {
-    // const userRef = ref(db, `profiles/${user.sub}`); 
-    const userRef = ref(db, `profiles`);
+  const fetchProfileData = async () => {
+    const userRef = ref(db, `profiles/${user.sub}`);
+    const snapshot = await get(userRef);
 
-    update(userRef, { [activeSection]: profileData[activeSection] })
-      .then(() => {
-        setConfirmationMessage('Profile updated successfully.');
-      })
-      .catch((error) => {
-        console.error('Error updating profile:', error);
-      });
+    if (snapshot.exists()) {
+      // Load existing data if available
+      const userData = snapshot.val();
+      setProfileData(userData);
+    }
   };
+
+  useEffect(() => {
+    if (user) {
+      fetchProfileData();
+    }
+  }, [user]);
+
+  const handleSubmit = () => {
+    const userRef = ref(db, `profiles/${user.sub}`);
+
+    if (profileData[activeSection]) {
+      // Update data if it already exists
+      update(userRef, { [activeSection]: profileData[activeSection] })
+        .then(() => {
+          setConfirmationMessage('Profile updated successfully.');
+        })
+        .catch((error) => {
+          console.error('Error updating profile:', error);
+        });
+    } else {
+      // Create a new section if it doesn't exist
+      set(userRef, { [activeSection]: profileData[activeSection] })
+        .then(() => {
+          setConfirmationMessage('Profile section added successfully.');
+        })
+        .catch((error) => {
+          console.error('Error adding profile section:', error);
+        });
+    }
+  };
+
 
   return (
     <div className="flex">
       <Sidebar />
 
-      <div className="flex-1 p-4">
+      <div className="flex-1 p-20">
         {confirmationMessage && (
           <div className="text-yellow-500 text-2xl font-bold">{confirmationMessage}</div>
         )}
-        {activeSection === 'basic' && (
-          <BasicInfoSection
-            profileData={profileData.basic}
-            setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
-          />
-        )}
-        {activeSection === 'moreInfo' && (
-          <MoreInfoSection
-            profileData={profileData.moreInfo}
-            setProfileData={(data) => setProfileData({ ...profileData, moreInfo: data })}
-          />
-        )}
-        {activeSection === 'coFounderPreference' && (
-          <CoFounderPreferenceSection
-            profileData={profileData.coFounderPreference}
-            setProfileData={(data) => setProfileData({ ...profileData, coFounderPreference: data })}
-          />
-        )}
-        {activeSection === 'profilePreview' && (
-          <ProfilePreviewSection profileData={profileData} />
-        )}
+        <BasicInfoSection
+          profileData={profileData.basic}
+          setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
+        />
 
         <button
           onClick={handleSubmit}
@@ -86,7 +95,7 @@ const MyProfile = () => {
 };
 
 const BasicInfoSection = ({ profileData, setProfileData }) => {
-  const {user} = useAuth0();
+  const { user } = useAuth0();
   return (
     <div>
       <h3 className="text-2xl font-semibold mb-4">Basic Information</h3>
@@ -151,19 +160,6 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
       {/* Add fields for 1 min video, Impressive accomplishment, education, employment, programming skills, gender, birthday, scheduling URL, and additional info here */}
     </div>
   );
-};
-
-const MoreInfoSection = ({ profileData, setProfileData }) => {
-  // Render and edit additional information fields here
-};
-
-const CoFounderPreferenceSection = ({ profileData, setProfileData }) => {
-  // Render and edit co-founder preferences fields here
-};
-
-const ProfilePreviewSection = ({ profileData }) => {
-  // Display a preview of the user's profile based on the data
-  // Update the code based on your specific profile display
 };
 
 export default MyProfile;
