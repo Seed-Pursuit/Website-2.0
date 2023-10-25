@@ -1,88 +1,92 @@
 import React, { useEffect, useState } from 'react';
 import { app } from '../../db/Firebase';
-import { get, getDatabase, ref, update } from 'firebase/database';
+import { getDatabase, ref, update } from 'firebase/database';
 import { useAuth0 } from '@auth0/auth0-react';
 import Sidebar from '../find_a_co_founder/Sidebar';
 
 const MyProfile = () => {
   const db = getDatabase(app);
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
+
   const [profileData, setProfileData] = useState({
     basic: {
       firstName: '',
       lastName: '',
       email: user.email,
+      // email: '',
       pronouns: '',
       bio: '',
       profileImage: null,
-      interestedIdeas: '',
-      committedToIdea: '',
-      coFounderPreferences:"",
+    },
+    moreInfo: {
+    },
+    coFounderPreference: {
     },
   });
 
+  const [activeSection, setActiveSection] = useState('basic');
   const [confirmationMessage, setConfirmationMessage] = useState('');
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      const userRef = ref(db, `profiles/${user.sub}`);
-      get(userRef)
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            const userData = snapshot.val();
-            console.log(userData);
-            setProfileData(userData);
-          }
-        })
-        .catch((error) => {
-          console.error('Error fetching profile data:', error);
-        });
-    }
-  }, [isAuthenticated, user.sub]);
-
-
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+  };
 
   const handleSubmit = () => {
-    if (isAuthenticated) {
-      const userRef = ref(db, `profiles/${user.sub}`);
-      update(userRef, { profileData })
-        .then(() => {
-          setConfirmationMessage('Profile updated successfully.');
-        })
-        .catch((error) => {
-          console.error('Error updating profile:', error);
-        });
-    }
+    // const userRef = ref(db, `profiles/${user.sub}`); 
+    const userRef = ref(db, `profiles`);
+
+    update(userRef, { [activeSection]: profileData[activeSection] })
+      .then(() => {
+        setConfirmationMessage('Profile updated successfully.');
+      })
+      .catch((error) => {
+        console.error('Error updating profile:', error);
+      });
   };
 
   return (
-    <div className="flex p-20">
+    <div className="flex">
       <Sidebar />
+
       <div className="flex-1 p-4">
         {confirmationMessage && (
           <div className="text-yellow-500 text-2xl font-bold">{confirmationMessage}</div>
         )}
+        {activeSection === 'basic' && (
+          <BasicInfoSection
+            profileData={profileData.basic}
+            setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
+          />
+        )}
+        {activeSection === 'moreInfo' && (
+          <MoreInfoSection
+            profileData={profileData.moreInfo}
+            setProfileData={(data) => setProfileData({ ...profileData, moreInfo: data })}
+          />
+        )}
+        {activeSection === 'coFounderPreference' && (
+          <CoFounderPreferenceSection
+            profileData={profileData.coFounderPreference}
+            setProfileData={(data) => setProfileData({ ...profileData, coFounderPreference: data })}
+          />
+        )}
+        {activeSection === 'profilePreview' && (
+          <ProfilePreviewSection profileData={profileData} />
+        )}
 
-        <BasicInfoSection
-          profileData={profileData.basic}
-          setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
-        />
-
-        {/* Button for saving the entire form */}
-        <div className="flex justify-center mt-4">
-          <button onClick={handleSubmit} className="bg-yellow-500 text-white py-2 px-4 rounded">
-            Save
-          </button>
-        </div>
+        <button
+          onClick={handleSubmit}
+          className="bg-yellow-500 text-white py-2 px-4 mt-4 rounded"
+        >
+          Save
+        </button>
       </div>
     </div>
   );
 };
 
-
 const BasicInfoSection = ({ profileData, setProfileData }) => {
-  const { user } = useAuth0();
-
+  const {user} = useAuth0();
   return (
     <div>
       <h3 className="text-2xl font-semibold mb-4">Basic Information</h3>
@@ -144,107 +148,22 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
           className="p-2 border border-gray-300 rounded w-full h-24"
         />
       </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">1-Minute Video</label>
-        <input
-          type="file"
-          name="video"
-          accept="video/*"
-          onChange={(e) => setProfileData({ ...profileData, video: e.target.files[0] })}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Impressive Accomplishment</label>
-        <textarea
-          name="accomplishment"
-          placeholder="Share an impressive accomplishment..."
-          value={profileData.accomplishment}
-          onChange={(e) => setProfileData({ ...profileData, accomplishment: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full h-24"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Education</label>
-        <input
-          type="text"
-          name="education"
-          placeholder="E.g., Bachelor's in Computer Science"
-          value={profileData.education}
-          onChange={(e) => setProfileData({ ...profileData, education: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Employment</label>
-        <input
-          type="text"
-          name="employment"
-          placeholder="E.g., Software Engineer at ABC Inc."
-          value={profileData.employment}
-          onChange={(e) => setProfileData({ ...profileData, employment: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Programming Skills</label>
-        <input
-          type="text"
-          name="programmingSkills"
-          placeholder="E.g., JavaScript, Python, React"
-          value={profileData.programmingSkills}
-          onChange={(e) => setProfileData({ ...profileData, programmingSkills: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Gender</label>
-        <select
-          name="gender"
-          value={profileData.gender}
-          onChange={(e) => setProfileData({ ...profileData, gender: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full"
-        >
-          <option value="">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Date of Birth</label>
-        <input
-          type="date"
-          name="birthday"
-          value={profileData.birthday}
-          onChange={(e) => setProfileData({ ...profileData, birthday: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Scheduling URL (Calendly, Google Meet, etc.)</label>
-        <input
-          type="text"
-          name="schedulingUrl"
-          placeholder="E.g., https://calendly.com/johndoe"
-          value={profileData.schedulingUrl}
-          onChange={(e) => setProfileData({ ...profileData, schedulingUrl: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-300">Additional Information</label>
-        <textarea
-          name="additionalInfo"
-          placeholder="Add any additional information here..."
-          value={profileData.additionalInfo}
-          onChange={(e) => setProfileData({ ...profileData, additionalInfo: e.target.value })}
-          className="p-2 border border-gray-300 rounded w-full h-24"
-        />
-      </div>
+      {/* Add fields for 1 min video, Impressive accomplishment, education, employment, programming skills, gender, birthday, scheduling URL, and additional info here */}
     </div>
   );
 };
 
+const MoreInfoSection = ({ profileData, setProfileData }) => {
+  // Render and edit additional information fields here
+};
+
+const CoFounderPreferenceSection = ({ profileData, setProfileData }) => {
+  // Render and edit co-founder preferences fields here
+};
+
+const ProfilePreviewSection = ({ profileData }) => {
+  // Display a preview of the user's profile based on the data
+  // Update the code based on your specific profile display
+};
 
 export default MyProfile;
