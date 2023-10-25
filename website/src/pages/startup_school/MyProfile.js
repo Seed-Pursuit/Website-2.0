@@ -6,13 +6,14 @@ import Sidebar from '../find_a_co_founder/Sidebar';
 
 const MyProfile = () => {
   const db = getDatabase(app);
-  const { user } = useAuth0();
+  // const { user } = useAuth0();
 
   const [profileData, setProfileData] = useState({
     basic: {
       firstName: '',
       lastName: '',
-      email: user.email,
+      // email: user.email,
+      email:'',
       pronouns: '',
       bio: '',
       profileImage: null,
@@ -31,7 +32,8 @@ const MyProfile = () => {
   };
 
   const handleSubmit = () => {
-    const userRef = ref(db, `profiles/${user.sub}`); 
+    // const userRef = ref(db, `profiles/${user.sub}`); 
+    const userRef = ref(db, `profiles`); 
 
     update(userRef, { [activeSection]: profileData[activeSection] })
       .then(() => {
