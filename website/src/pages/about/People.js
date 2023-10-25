@@ -3,7 +3,7 @@ import React from 'react';
 const teamMembers = [
   {
     name: 'Vaishnavi Kale',
-    avatar: 'https://randomuser.me/api/portraits/women/8.jpg', 
+    avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
   },
   {
     name: 'Shreya Jadhav',

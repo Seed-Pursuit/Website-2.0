@@ -93,7 +93,6 @@ const MyProfile = () => {
     </div>
   );
 };
-
 const BasicInfoSection = ({ profileData, setProfileData }) => {
   const { user } = useAuth0();
   return (
@@ -148,16 +147,70 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-300">Introduce Yourself</label>
+        <label className="block text-gray-300">Location</label>
+        <input
+          type="text"
+          name="location"
+          placeholder="E.g., New York, NY"
+          value={profileData.location}
+          onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Impressive Accomplishment</label>
         <textarea
-          name="introduction"
-          placeholder="Introduce yourself..."
-          value={profileData.introduction}
-          onChange={(e) => setProfileData({ ...profileData, introduction: e.target.value })}
+          name="impressiveAccomplishment"
+          placeholder="Share an impressive accomplishment..."
+          value={profileData.impressiveAccomplishment}
+          onChange={(e) => setProfileData({ ...profileData, impressiveAccomplishment: e.target.value })}
           className="p-2 border border-gray-300 rounded w-full h-24"
         />
       </div>
-      {/* Add fields for 1 min video, Impressive accomplishment, education, employment, programming skills, gender, birthday, scheduling URL, and additional info here */}
+      <div className="mb-4">
+        <label className="block text-gray-300">Employment</label>
+        <input
+          type="text"
+          name="employment"
+          placeholder="E.g., Software Engineer at ABC Inc."
+          value={profileData.employment}
+          onChange={(e) => setProfileData({ ...profileData, employment: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Are you a programmer?</label>
+        <select
+          name="isProgrammer"
+          value={profileData.isProgrammer}
+          onChange={(e) => setProfileData({ ...profileData, isProgrammer: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Scheduling URL</label>
+        <input
+          type="text"
+          name="schedulingUrl"
+          placeholder="E.g., https://your-scheduling-url.com"
+          value={profileData.schedulingUrl}
+          onChange={(e) => setProfileData({ ...profileData, schedulingUrl: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Additional Info</label>
+        <textarea
+          name="additionalInfo"
+          placeholder="Provide any additional information..."
+          value={profileData.additionalInfo}
+          onChange={(e) => setProfileData({ ...profileData, additionalInfo: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
     </div>
   );
 };
