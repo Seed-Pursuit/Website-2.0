@@ -56,12 +56,12 @@ const Sidebar = () => {
                                 Inbox
                             </Link>
                         </li>
-                        <li className="my-2">
+                        {/* <li className="my-2">
                             <Link to="/read-the-guide" className="flex items-center">
                                 <FiBook className="mr-2" />
                                 Read the Guide
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="my-2">
                             Curriculum
                             <ul className="ml-4">
