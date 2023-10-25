@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getDatabase, ref, push, set } from 'firebase/database';
-import app from '../../db/Firebase';
+import app from './Firebase';
 
 const Newsletter = () => {
     const [email, setEmail] = useState('');
