@@ -36,7 +36,7 @@ import PreviewProfile from "./pages/startup_school/PreviewProfile";
 
 function App() {
   return (
-    <div className="font-righteous bg-[#f9fbf2]">
+    <div className="sans bg-[#f9fbf2]">
       <Router>
         <Navbar />
         <Routes>
