@@ -51,7 +51,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-transparent fixed w-full">
+        <nav className="bg-white fixed w-full">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center py-3">
                     <div className="text-2xl font-heading text-purple flex">

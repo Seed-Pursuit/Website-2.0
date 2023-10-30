@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import { FiHome, FiUsers, FiMail, FiBook, FiUser, FiSettings, FiHelpCircle, FiLogOut } from 'react-icons/fi';
+import { FiHome, FiUsers, FiMail, FiBook, FiUser, FiSettings, FiHelpCircle, FiLogOut, FiUserCheck } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const Sidebar = () => {
@@ -91,6 +91,12 @@ const Sidebar = () => {
                             <Link to="/my-profile" className="flex items-center">
                                 <FiUser className="mr-2" />
                                 My Profile
+                            </Link>
+                        </li>
+                        <li className="my-2">
+                            <Link to="/preview-profile" className="flex items-center">
+                                <FiUserCheck className="mr-2" />
+                                Preview Profile
                             </Link>
                         </li>
                         <li className="my-2">

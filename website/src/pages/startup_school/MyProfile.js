@@ -20,12 +20,33 @@ const MyProfile = () => {
       location: '',
       impressiveAccomplishment: '',
       employment: '',
+      education: '',
+      gender: '',
+      birthdate: '',
       isProgrammer: '',
       schedulingUrl: '',
       additionalInfo: '',
+      videoIntroduction: '',
+      additionalLinks: ''
     },
-    moreInfo: {},
-    coFounderPreference: {},
+    moreInfo: {
+      startupIdea: '',
+      ideasInterested: '',
+      alreadyHaveCoFounder: '',
+      areasWillingToTakeResponsibility: '',
+      topicsAndIndustriesInterested: '',
+      ExpectationsForSplittingEquality: '',
+      hobbiesAndInterest: ''
+    },
+    coFounderPreference: {
+      whatAreYouLookingForInCoFounder: '',
+      lookingForCoFounderWithSpecificIdea: '',
+      technicalOrNonTechnicalProfiles: '',
+      matchUpTiming: '',
+      locationPreference: '',
+      matchCandidateWhoShareYourInterest: '',
+      alertForNewMatches: ''
+    },
   });
 
   const [activeSection, setActiveSection] = useState('basic');
@@ -197,7 +218,7 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-300">Are you a programmer?</label>
+        <label className="block text-gray-300">Are You A Programmer</label>
         <select
           name="isProgrammer"
           value={profileData.isProgrammer}
@@ -219,6 +240,7 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
           className="p-2 border border-gray-300 rounded w-full"
         />
       </div>
+
       <div className="mb-4">
         <label className="block text-gray-300">Additional Info</label>
         <textarea
@@ -229,7 +251,231 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
           className="p-2 border border-gray-300 rounded w-full h-24"
         />
       </div>
-      <h3 className="text-2xl font-semibold mb-4">Basic Information</h3>
+      <div className="mb-4">
+        <label className="block text-gray-300">Video Introduction</label>
+        <input
+          type="text"
+          name="videoIntroduction"
+          placeholder="E.g., https://www.youtube.com/watch?v=12345"
+          value={profileData.videoIntroduction}
+          onChange={(e) => setProfileData({ ...profileData, videoIntroduction: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Additional Links</label>
+        <input
+          type="text"
+          name="additionalLinks"
+          placeholder="E.g., https://www.example.com"
+          value={profileData.additionalLinks}
+          onChange={(e) => setProfileData({ ...profileData, additionalLinks: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <h3 className="text-2xl font-semibold mb-4">More Information</h3>
+      <div className="mb-4">
+        <label className="block text-gray-300">Pronouns</label>
+        <input
+          type="text"
+          name="pronouns"
+          placeholder="E.g., He/Him/His"
+          value={profileData.pronouns}
+          onChange={(e) => setProfileData({ ...profileData, pronouns: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Gender</label>
+        <input
+          type="text"
+          name="gender"
+          placeholder="Male, Female, Nonbinary, etc."
+          value={profileData.gender}
+          onChange={(e) => setProfileData({ ...profileData, gender: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Birthdate</label>
+        <input
+          type="text"
+          name="birthdate"
+          placeholder="E.g., 01/01/2000"
+          value={profileData.birthdate}
+          onChange={(e) => setProfileData({ ...profileData, birthdate: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Education</label>
+        <input
+          type="text"
+          name="education"
+          placeholder="E.g., B.S. in Computer Science"
+          value={profileData.education}
+          onChange={(e) => setProfileData({ ...profileData, education: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+
+      <h3 className="text-2xl font-semibold mb-4">More Info</h3>
+      <div className="mb-4">
+        <label className="block text-gray-300">Startup Idea</label>
+        <textarea
+          name="startupIdea"
+          placeholder="Describe your startup idea..."
+          value={profileData.startupIdea}
+          onChange={(e) => setProfileData({ ...profileData, startupIdea: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Ideas Interested</label>
+        <textarea
+          name="ideasInterested"
+          placeholder="Describe your ideas interested..."
+          value={profileData.ideasInterested}
+          onChange={(e) => setProfileData({ ...profileData, ideasInterested: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Already Have Co-Founder</label>
+        <select
+          name="alreadyHaveCoFounder"
+          value={profileData.alreadyHaveCoFounder}
+          onChange={(e) => setProfileData({ ...profileData, alreadyHaveCoFounder: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Areas Willing To Take Responsibility</label>
+        <textarea
+          name="areasWillingToTakeResponsibility"
+          placeholder="Describe your areas willing to take responsibility..."
+          value={profileData.areasWillingToTakeResponsibility}
+          onChange={(e) => setProfileData({ ...profileData, areasWillingToTakeResponsibility: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Topics And Industries Interested</label>
+        <textarea
+          name="topicsAndIndustriesInterested"
+          placeholder="Describe your topics and industries interested..."
+          value={profileData.topicsAndIndustriesInterested}
+          onChange={(e) => setProfileData({ ...profileData, topicsAndIndustriesInterested: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Expectations For Splitting Equality</label>
+        <textarea
+          name="ExpectationsForSplittingEquality"
+          placeholder="Describe your expectations for splitting equality..."
+          value={profileData.ExpectationsForSplittingEquality}
+          onChange={(e) => setProfileData({ ...profileData, ExpectationsForSplittingEquality: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Hobbies And Interest</label>
+        <textarea
+          name="hobbiesAndInterest"
+          placeholder="Describe your hobbies and interest..."
+          value={profileData.hobbiesAndInterest}
+          onChange={(e) => setProfileData({ ...profileData, hobbiesAndInterest: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
+      <h3 className="text-2xl font-semibold mb-4">Co-Founder Preference</h3>
+      <div className="mb-4">
+        <label className="block text-gray-300">What Are You Looking For In Co-Founder</label>
+        <textarea
+          name="whatAreYouLookingForInCoFounder"
+          placeholder="Describe what are you looking for in co-founder..."
+          value={profileData.whatAreYouLookingForInCoFounder}
+          onChange={(e) => setProfileData({ ...profileData, whatAreYouLookingForInCoFounder: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full h-24"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Looking For Co-Founder With Specific Idea</label>
+        <select
+          name="lookingForCoFounderWithSpecificIdea"
+          value={profileData.lookingForCoFounderWithSpecificIdea}
+          onChange={(e) => setProfileData({ ...profileData, lookingForCoFounderWithSpecificIdea: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Technical Or Non-Technical Profiles</label>
+        <select
+          name="technicalOrNonTechnicalProfiles"
+          value={profileData.technicalOrNonTechnicalProfiles}
+          onChange={(e) => setProfileData({ ...profileData, technicalOrNonTechnicalProfiles: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="technical">Technical</option>
+          <option value="non-technical">Non-Technical</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Match Up Timing</label>
+        <select
+          name="matchUpTiming"
+          value={profileData.matchUpTiming}
+          onChange={(e) => setProfileData({ ...profileData, matchUpTiming: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="now">Now</option>
+          <option value="later">Later</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Location Preference</label>
+        <input
+          type="text"
+          name="locationPreference"
+          placeholder="E.g., New York, NY"
+          value={profileData.locationPreference}
+          onChange={(e) => setProfileData({ ...profileData, locationPreference: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Match Candidate Who Share Your Interest</label>
+        <select
+          name="matchCandidateWhoShareYourInterest"
+          value={profileData.matchCandidateWhoShareYourInterest}
+          onChange={(e) => setProfileData({ ...profileData, matchCandidateWhoShareYourInterest: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block text-gray-300">Alert For New Matches</label>
+        <select
+          name="alertForNewMatches"
+          value={profileData.alertForNewMatches}
+          onChange={(e) => setProfileData({ ...profileData, alertForNewMatches: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      {/* <button onClick={()=>{setShowForm(!showForm)}}>Cancel</button> */}
+      {/* <button onClick={()=>{setShowForm(!showForm)}}>Save</button> */}
     </div>
   );
 };

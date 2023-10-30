@@ -31,6 +31,7 @@ import WeeklyUpdates from "./pages/startup_school/WeeklyUpdates";
 import Settings from "./pages/startup_school/Settings";
 import Help from "./pages/startup_school/Help";
 import FamiliarAskedQuestions from './pages/about/FamiliarAskedQue';
+import PreviewProfile from "./pages/startup_school/PreviewProfile";
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
           <Route path="/sp-library" element={<Library />} exact />
           <Route path="/help" element={<Help />} exact />
           <Route path="/dashboard" element={<Dashboard />} exact />
+          <Route path="/preview-profile" element={<PreviewProfile/>} exact/>
         </Routes>
         <Footer />
       </Router>
