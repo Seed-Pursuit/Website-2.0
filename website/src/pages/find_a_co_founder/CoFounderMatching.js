@@ -8,9 +8,12 @@ import Avatar5 from '../../assets/avatar5.png';
 import Avatar6 from '../../assets/avatar6.png';
 import Avatar7 from '../../assets/avatar7.png';
 import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 const CoFounderMatching = () => {
+    const {isAuthenticated, user, loginWithPopup } = useAuth0();
+
     return (
         <div>
             <div className="w-[1154px] h-[702px]">
@@ -68,11 +71,19 @@ const CoFounderMatching = () => {
                         className="w-[229px] h-[58px] absolute left-[-1px] top-[-1px] rounded-[50px] bg-[#ef626c] border border-[#22181c]"
                         style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
                     />
-                   <Link to="/startup_school">
-                   <p className=" h-12 absolute left-[55px] top-[15px]  text-md text-center text-black">
-                        Signup/Login
-                    </p>
-                   </Link>
+                    {isAuthenticated ? (
+                        <Link to="/startup_school">
+                            <p className="h-12 absolute left-[55px] top-[15px] text-md text-center text-black">
+                                Go To Dashboard
+                            </p>
+                        </Link>
+                    ) : (
+                        <Link onClick={loginWithPopup}>
+                            <p className="h-12 absolute left-[55px] top-[15px] text-md text-center text-black">
+                                Sign up/Login
+                            </p>
+                        </Link>
+                    )}
                 </div>
                 <p className="w-[792px] absolute left-[77px] top-[625px] text-sm text-left text-black">
                     Finding the right co-founder is a critical step in your entrepreneurial journey. At Seed
