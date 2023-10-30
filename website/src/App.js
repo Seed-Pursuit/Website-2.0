@@ -36,7 +36,7 @@ import PreviewProfile from "./pages/startup_school/PreviewProfile";
 
 function App() {
   return (
-    <div className="sans bg-[#f9fbf2]">
+    <div className="font-righteous bg-[#f9fbf2]">
       <Router>
         <Navbar />
         <Routes>
@@ -73,7 +73,7 @@ function App() {
           <Route path="/sp-library" element={<Library />} exact />
           <Route path="/help" element={<Help />} exact />
           <Route path="/dashboard" element={<Dashboard />} exact />
-          <Route path="/preview-profile" element={<PreviewProfile/>} exact/>
+          <Route path="/preview-profile" element={<PreviewProfile />} exact />
         </Routes>
         <Footer />
       </Router>
