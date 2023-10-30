@@ -32,6 +32,8 @@ import Settings from "./pages/startup_school/Settings";
 import Help from "./pages/startup_school/Help";
 import FamiliarAskedQuestions from './pages/about/FamiliarAskedQue';
 import PreviewProfile from "./pages/startup_school/PreviewProfile";
+import Track from "./pages/startup_school/Track";
+import CompanyInfo from "./pages/startup_school/CompanyInfo";
 
 
 function App() {
@@ -74,6 +76,8 @@ function App() {
           <Route path="/help" element={<Help />} exact />
           <Route path="/dashboard" element={<Dashboard />} exact />
           <Route path="/preview-profile" element={<PreviewProfile />} exact />
+          <Route path="/track" element={<Track/>} exact/>
+          <Route path="/company_info" element={<CompanyInfo/>} exact/>
         </Routes>
         <Footer />
       </Router>
