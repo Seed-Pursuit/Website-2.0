@@ -131,21 +131,21 @@ const Navbar = () => {
                                 )}
                             </AnimatePresence>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/startup" className="flex">
                                 Startup
                             </Link>
-                        </li>
+                        </li> */}
                         <li>
                             <Link to="/find-co-founder" className="flex">
                                 Find a co-founder
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/library" className="flex">
                                 Library
                             </Link>
-                        </li>
+                        </li> */}
                         <li>
                             <Link className="flex" onClick={toggleResourcesDropdown}>
                                 Resources
