@@ -476,6 +476,7 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
       </div>
       {/* <button onClick={()=>{setShowForm(!showForm)}}>Cancel</button> */}
       {/* <button onClick={()=>{setShowForm(!showForm)}}>Save</button> */}
+
     </div>
   );
 };
