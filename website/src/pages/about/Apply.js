@@ -91,7 +91,7 @@ const Apply = () => {
             Why Participate?
           </p>
         </div>
-        <div className="">
+        <div className="font-nunito">
           <p className="left-[68px] text-lg font-bold text-left">
             <span className="text-lg font-bold text-left text-[#ef626c]">
               Visibility
@@ -137,7 +137,7 @@ const Apply = () => {
         <p className="text-[45px] text-left text-[#04033f]">
           Beyond the event
         </p>
-        <p className="text-lg font-bold text-left text-[#af70c3]">
+        <p className="text-lg font-bold text-left text-[#af70c3] font-nunito">
           The impact of participating in a Seed Pursuit showcase event doesn't end with the competition.
           We continue to support founders with guidance, introductions to potential partners, and
           opportunities for further funding. Join us at the forefront of innovation, where your startup
@@ -148,7 +148,7 @@ const Apply = () => {
         <p className="text-[45px] text-left text-[#04033f]">
           What to expect?
         </p>
-        <p className="text-lg font-bold text-left">
+        <p className="text-lg font-bold text-left font-nunito">
           <span className="text-lg font-bold text-left text-[#fb7a5a]">
             High Energy
           </span>

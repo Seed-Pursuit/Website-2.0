@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Righteous:wght@400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&family=Righteous&display=swap');
 
 .font-righteous {
   font-family: 'Righteous';
 }
 
+.font-nunito{
+  font-family: 'Nunito', sans-serif;
+}
 @keyframes upDownAnimation {
 
   0%,

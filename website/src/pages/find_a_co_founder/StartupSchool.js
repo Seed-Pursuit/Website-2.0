@@ -15,7 +15,7 @@ const StartupSchool = () => {
                 <div>
                     <div className="w-[389px] h-[511px]">
                         <div className="w-[389px] h-[511px] absolute left-[342.5px] top-[295.5px] rounded-[10px] bg-[#f5f5ee] border border-black" />
-                        <div className="w-[273px] h-[98px]">
+                        {/* <div className="w-[273px] h-[98px]">
                             <img
                                 className="w-[76px] h-[98px] absolute left-[400.5px] top-[376.5px] rounded-lg"
                                 src={avatar1}
@@ -31,9 +31,9 @@ const StartupSchool = () => {
                                 src={avatar3}
                                 alt=''
                             />
-                        </div>
+                        </div> */}
 
-                        <p className="absolute left-[524px] top-[508px] text-[45px] text-left text-black">3</p>
+                        <p className="absolute left-[524px] top-[508px] text-[45px] text-left text-black">0</p>
                         <p className="absolute left-[428px] top-[564px] text-[35px] text-left text-black">
                             Pending requests
                         </p>
@@ -52,11 +52,11 @@ const StartupSchool = () => {
                     </div>
                     <div className="w-[389px] h-[511px]">
                         <div className="w-[389px] h-[511px] absolute left-[776.5px] top-[295.5px] rounded-[10px] bg-[#f5f5ee] border border-black" />
-                        <img
+                        {/* <img
                             className="w-[77px] h-[98px] absolute left-[932.5px] top-[376.5px] rounded-lg"
                             src={avatar1} alt=''
-                        />
-                        <p className="absolute left-[958px] top-[508px] text-[45px] text-left text-black">1</p>
+                        /> */}
+                        <p className="absolute left-[958px] top-[508px] text-[45px] text-left text-black">0</p>
                         <p className="absolute left-[862px] top-[564px] text-[35px] text-left text-black">
                             Unread message
                         </p>

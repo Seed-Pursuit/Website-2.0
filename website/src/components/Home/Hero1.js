@@ -2,11 +2,11 @@ import React from 'react';
 
 const Hero1 = () => {
   return (
-    <div className="flex justify-center items-center space-x-5 py-10">
+    <div className="flex justify-center items-center space-x-5 py-10 px-3">
       {/* Card 1 */}
-      <div className="relative w-80 h-75 rounded-lg bg-[#ffede1] shadow-md text-center p-5 transition-transform transform hover:scale-105 hover:shadow-xl">
-        <p className="text-4xl text-[#f32e7d] font-semibold mb-4">
-          SP top companies list by revenue
+      <div className="relative h-100 rounded-lg bg-[#ffede1] shadow-md text-center p-5 transition-transform transform hover:scale-105 hover:shadow-xl">
+        <p className="text-4xl text-[#ef626c] font-semibold mb-4">
+          Top companies
         </p>
         <p className="text-lg text-black">
           Explore a curated list of top-performing companies ranked by revenue, providing valuable insights
@@ -14,7 +14,7 @@ const Hero1 = () => {
       </div>
 
       {/* Card 2 */}
-      <div className="relative w-80 h-75 rounded-lg bg-[#ffede1] shadow-md text-center p-5 transition-transform transform hover:scale-105 hover:shadow-xl">
+      <div className="relative h-100 rounded-lg bg-[#ffede1] shadow-md text-center p-5 transition-transform transform hover:scale-105 hover:shadow-xl">
         <p className="text-4xl text-[#ef626c] font-semibold mb-4">
           SP Library
         </p>
@@ -24,7 +24,7 @@ const Hero1 = () => {
       </div>
 
       {/* Card 3 */}
-      <div className="relative w-80 h-75 rounded-lg bg-[#ffede1] shadow-md text-center p-5 transition-transform transform hover:scale-105 hover:shadow-xl">
+      <div className="relative h-100 rounded-lg bg-[#ffede1] shadow-md text-center p-5 transition-transform transform hover:scale-105 hover:shadow-xl">
         <p className="text-4xl text-[#ef626c] font-semibold mb-4">
           The Standard Deal
         </p>

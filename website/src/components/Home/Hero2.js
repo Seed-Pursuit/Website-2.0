@@ -4,10 +4,10 @@ import Image from '../../assets/image-5.png';
 const Hero2 = () => {
 
     return (
-        <div>
-            <div className="flex items-center justify-between">
+        <div className='font-nunito'>
+            <div className="flex ">
                 <div className="w-1/2 pr-5">
-                <AnimatedImage />
+                    <AnimatedImage />
                 </div>
                 <div className="w-1/2 pr-5 text-md">
                     <TextRightBlock title="Unlock Your Funding Potential">
@@ -37,9 +37,9 @@ const Hero2 = () => {
 
 const TextRightBlock = ({ title, children }) => {
     return (
-        <p className="text-[28px] text-right text-[#333]"> 
+        <p className="text-[28px] text-left text-[#333]">
             <span className="text-[28px] text-black">“</span>
-            <span className="text-[28px] text-[#fb7a5a] font-bold">{title}</span> 
+            <span className="text-[28px] text-[#fb7a5a] font-bold">{title}</span>
             <span className="text-[28px] text-black">”:</span> {children}
         </p>
     );
@@ -47,7 +47,7 @@ const TextRightBlock = ({ title, children }) => {
 
 const AnimatedImage = () => {
     const animationStyle = {
-        animation: 'upDownAnimation 4s ease-in-out infinite', 
+        animation: 'upDownAnimation 4s ease-in-out infinite',
     };
 
     return (
