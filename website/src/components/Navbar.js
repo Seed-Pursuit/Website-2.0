@@ -20,32 +20,48 @@ const Navbar = () => {
         if (dropdownName !== 'pursuit-coin') setIsPursuitCoinDropdownOpen(false);
         if (dropdownName !== 'profile') setIsProfileDropdownOpen(false);
     };
+    const closeDropdown = (dropdownName) => {
+        switch (dropdownName) {
+            case 'about':
+                setIsAboutDropdownOpen(false);
+                break;
+            case 'companies':
+                setIsCompaniesDropdownOpen(false);
+                break;
+            case 'resources':
+                setIsResourcesDropdownOpen(false);
+                break;
+            case 'pursuit-coin':
+                setIsPursuitCoinDropdownOpen(false);
+                break;
+            case 'profile':
+                setIsProfileDropdownOpen(false);
+                break;
+            default:
+                break;
+        }
+    };
 
     const toggleAboutDropdown = () => {
         setIsAboutDropdownOpen(!isAboutDropdownOpen);
-        openDropdown('about');
     };
 
     const toggleCompaniesDropdown = () => {
         setIsCompaniesDropdownOpen(!isCompaniesDropdownOpen);
-        openDropdown('companies');
     };
 
     const toggleResourcesDropdown = () => {
         setIsResourcesDropdownOpen(!isResourcesDropdownOpen);
-        openDropdown('resources');
     };
 
     const togglePursuitCoinDropdown = () => {
         setIsPursuitCoinDropdownOpen(!isPursuitCoinDropdownOpen);
-        openDropdown('pursuit-coin');
     };
 
     const toggleProfileDropdown = () => {
         if (!isAuthenticated) {
             loginWithPopup();
         } else {
-            openDropdown('profile');
             setIsProfileDropdownOpen(!isProfileDropdownOpen);
         }
     };
@@ -77,22 +93,22 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <Link to="/what_happens_at_sp">What happens at SP</Link>
+                                                <Link to="/what_happens_at_sp" onClick={() => closeDropdown('about')}>What happens at SP</Link>
                                             </li>
                                             <li>
-                                                <Link to="/apply">Apply</Link>
+                                                <Link to="/apply" onClick={() => closeDropdown('about')}>Apply</Link>
                                             </li>
                                             <li>
-                                                <Link to="/interview_guide">SP Interview Guide</Link>
+                                                <Link to="/interview_guide" onClick={() => closeDropdown('about')}>SP Interview Guide</Link>
                                             </li>
                                             <li>
-                                                <Link to="/faq">FAQ</Link>
+                                                <Link to="/faq" onClick={() => closeDropdown('about')}>FAQ</Link>
                                             </li>
                                             <li>
-                                                <Link to="/people">People</Link>
+                                                <Link to="/people" onClick={() => closeDropdown('about')}>People</Link>
                                             </li>
                                             <li>
-                                                <Link to="/blogs">SP Blogs</Link>
+                                                <Link to="/blogs" onClick={() => closeDropdown('about')}>SP Blogs</Link>
                                             </li>
                                         </ul>
                                     </motion.div>
@@ -115,27 +131,27 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <Link to="/startup_directory">Startup Directory</Link>
+                                                <Link to="/startup_directory" onClick={() => closeDropdown('companies')}>Startup Directory</Link>
                                             </li>
                                             <li>
-                                                <Link to="/top_companies">Top Companies</Link>
+                                                <Link to="/top_companies" onClick={() => closeDropdown('companies')}>Top Companies</Link>
                                             </li>
                                             <li>
-                                                <Link to="/founder_directory">Founder Directory</Link>
+                                                <Link to="/founder_directory" onClick={() => closeDropdown('companies')}>Founder Directory</Link>
                                             </li>
                                             <li>
-                                                <Link to="/product">Product</Link>
+                                                <Link to="/product" onClick={() => closeDropdown('companies')}>Product</Link>
                                             </li>
                                         </ul>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
                         </li>
-                        {/* <li>
+                        <li>
                             <Link to="/startup" className="flex">
-                                Startup
+                                Startup Jobs
                             </Link>
-                        </li> */}
+                        </li>
                         <li>
                             <Link to="/find-co-founder" className="flex">
                                 Find a co-founder
@@ -162,16 +178,16 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <Link to="/startup_school">Startup School</Link>
+                                                <Link to="/startup_school" onClick={() => closeDropdown('resources')}>Startup School</Link>
                                             </li>
                                             <li>
-                                                <Link to="/newsletter">Newsletter</Link>
+                                                <Link to="/newsletter" onClick={() => closeDropdown('resources')}>Newsletter</Link>
                                             </li>
                                             <li>
-                                                <Link to="/investor_resources">For Investors</Link>
+                                                <Link to="/investor_resources" onClick={() => closeDropdown('resources')}>For Investors</Link>
                                             </li>
                                             <li>
-                                                <Link to="/hackers_news">Hackers News</Link>
+                                                <Link to="/hackers_news" onClick={() => closeDropdown('resources')}>Hackers News</Link>
                                             </li>
                                         </ul>
                                     </motion.div>
@@ -194,10 +210,10 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <Link to="https://pursuit-coin.vercel.app/">View Grants</Link>
+                                                <a href="https://pursuit-coin.vercel.app/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>View Grants</a>
                                             </li>
                                             <li>
-                                                <Link to="/https://pursuit-coin.vercel.app/">Apply for a Grant</Link>
+                                                <a href="https://pursuit-coin.vercel.app/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>Apply for a Grant</a>
                                             </li>
                                         </ul>
                                     </motion.div>
@@ -236,10 +252,10 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <Link to="/profile">Profile Settings</Link>
+                                                <Link to="/profile" onClick={() => closeDropdown('profile')}>Profile Settings</Link>
                                             </li>
                                             <li>
-                                                <button onClick={() => logout()}>Logout</button>
+                                                <button onClick={() => logout()} >Logout</button>
                                             </li>
                                         </ul>
                                     </motion.div>
