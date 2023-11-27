@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { app } from '../../db/Firebase'; 
-import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
+import { getDatabase, ref, set } from 'firebase/database';
 import { v4 as uuidv4 } from 'uuid';
 
 const StartupHome = () => {
   const [startupName, setStartupName] = useState('');
   const [startupDescription, setStartupDescription] = useState('');
-  const firestore = getFirestore(app);
+  const database = getDatabase(app);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -14,9 +14,9 @@ const StartupHome = () => {
     // Generate a unique key for the startup
     const startupKey = uuidv4();
 
-    // Save startup profile to Firebase Firestore with the unique key
-    const startupRef = doc(firestore, 'startups', startupKey);
-    await setDoc(startupRef, {
+    // Save startup profile to Firebase Realtime Database with the unique key
+    const startupRef = ref(database, 'startups/' + startupKey);
+    await set(startupRef, {
       name: startupName,
       description: startupDescription,
     });
