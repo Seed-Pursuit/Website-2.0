@@ -53,7 +53,7 @@ function Dashboard() {
             <div className="h-12 w-12 bg-gray-300 rounded-full"></div>
           </div>
 
-          <p className="text-2xl font-bold">You have 3 matches that you haven't met yet.</p>
+          <p className="text-2xl font-bold">You have 0 matches that you haven't met yet.</p>
           <p className="text-gray-600">
             Keep the search moving fast! Most successful teams set up an initial
             meeting within a week of matching.

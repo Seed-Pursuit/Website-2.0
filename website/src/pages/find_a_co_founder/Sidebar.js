@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import { FiHome, FiUsers, FiMail, FiBook, FiUser, FiSettings, FiHelpCircle, FiLogOut, FiUserCheck } from 'react-icons/fi';
+import { FiHome, FiUsers, FiMail, FiBook, FiUser, FiSettings, FiHelpCircle, FiLogOut, FiUserCheck, FiCompass } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const Sidebar = () => {
@@ -13,7 +13,7 @@ const Sidebar = () => {
     };
 
     const handleLogout = () => {
-        logout(); 
+        logout();
     };
 
     return (
@@ -65,11 +65,11 @@ const Sidebar = () => {
                         <li className="my-2">
                             Curriculum
                             <ul className="ml-4">
-                                <li className="my-2">
+                                {/* <li className="my-2">
                                     <Link to="/course-overview" className="flex items-center">
                                         Course Overview
                                     </Link>
-                                </li>
+                                </li> */}
                                 <li className="my-2">
                                     <Link to="/curriculum" className="flex items-center">
                                         Curriculum
@@ -80,11 +80,11 @@ const Sidebar = () => {
                                         Weekly Updates
                                     </Link>
                                 </li>
-                                <li className="my-2">
+                                {/* <li className="my-2">
                                     <Link to="/sp-library" className="flex items-center">
                                         SP Library
                                     </Link>
-                                </li>
+                                </li> */}
                             </ul>
                         </li>
                         <li className="my-2">
@@ -106,9 +106,9 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="my-2">
-                            <Link to="/help" className="flex items-center">
-                                <FiHelpCircle className="mr-2" />
-                                Help
+                            <Link to="/register-startup" className="flex items-center">
+                                <FiCompass className="mr-2" />
+                                Register Startup
                             </Link>
                         </li>
                         <li className="my-2">

@@ -72,7 +72,7 @@ const CoFounderMatching = () => {
                         style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.25)" }}
                     />
                     {isAuthenticated ? (
-                        <Link to="/startup_school">
+                        <Link to="/dashboard">
                             <p className="h-12 absolute left-[55px] top-[15px] text-md text-center text-black">
                                 Go To Dashboard
                             </p>

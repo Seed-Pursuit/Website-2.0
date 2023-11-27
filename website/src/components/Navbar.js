@@ -67,7 +67,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-white fixed w-full">
+        <nav className="bg-white w-full">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center py-3">
                     <div className="text-2xl font-heading text-purple flex">
@@ -210,10 +210,10 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <a href="https://pursuit-coin.vercel.app/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>View Grants</a>
+                                                <a href="http://localhost:3000/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>View Grants</a>
                                             </li>
                                             <li>
-                                                <a href="https://pursuit-coin.vercel.app/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>Apply for a Grant</a>
+                                                <a href="http://localhost:3000/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>Apply for a Grant</a>
                                             </li>
                                         </ul>
                                     </motion.div>
