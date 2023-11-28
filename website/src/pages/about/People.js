@@ -3,19 +3,19 @@ import React from 'react';
 const teamMembers = [
   {
     name: 'Vaishnavi Kale',
-    avatar: 'https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoyLCJub3NlIjo2LCJtb3V0aCI6MywiZXllcyI6MTAsImV5ZWJyb3dzIjoxMywiZ2xhc3NlcyI6MTMsImhhaXIiOjI1LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImhhbGxvd2VlbiI6MCwiZmxpcCI6MCwiY29sb3IiOiJyZ2JhKDI1NSwgMCwgMCwgMCkiLCJzaGFwZSI6Im5vbmUifQ==',
+    avatar:'../../assets/avatar1.png'
   },
   {
     name: 'Shreya Jadhav',
-    avatar: 'https://notion-avatar.vercel.app/api/img/eyJmYWNlIjo3LCJub3NlIjowLCJtb3V0aCI6NywiZXllcyI6NywiZXllYnJvd3MiOjEsImdsYXNzZXMiOjgsImhhaXIiOjU2LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImhhbGxvd2VlbiI6MCwiZmxpcCI6MCwiY29sb3IiOiJyZ2JhKDI1NSwgMCwgMCwgMCkiLCJzaGFwZSI6Im5vbmUifQ==',
+    avatar:'../../assets/avatar2.png'
   },
   {
     name: 'Shruti Shende',
-    avatar: 'https://notion-avatar.vercel.app/api/img/eyJmYWNlIjo2LCJub3NlIjo5LCJtb3V0aCI6MTcsImV5ZXMiOjMsImV5ZWJyb3dzIjoxNCwiZ2xhc3NlcyI6MSwiaGFpciI6NTcsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MCwiY29sb3IiOiJyZ2JhKDI1NSwgMCwgMCwgMCkiLCJzaGFwZSI6Im5vbmUifQ==',
+    avatar: '../../assets/avatar3.png',
   },
   {
     name: 'Sawari Shinde',
-    avatar: 'https://notion-avatar.vercel.app/api/img/eyJmYWNlIjoxLCJub3NlIjo2LCJtb3V0aCI6MCwiZXllcyI6MiwiZXllYnJvd3MiOjMsImdsYXNzZXMiOjAsImhhaXIiOjU3LCJhY2Nlc3NvcmllcyI6MCwiZGV0YWlscyI6MCwiYmVhcmQiOjAsImZsaXAiOjAsImNvbG9yIjoicmdiYSgyNTUsIDAsIDAsIDApIiwic2hhcGUiOiJub25lIn0=',
+    avatar:'../../assets/avatar4.png'
   },
 ];
 

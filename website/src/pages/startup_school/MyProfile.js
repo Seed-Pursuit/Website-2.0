@@ -98,7 +98,7 @@ const MyProfile = () => {
 
 
   return (
-    <div className="flex">
+    <div className="flex" rounded-lg>
       <Sidebar />
 
       <div className="flex-1 p-20">
@@ -125,7 +125,7 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
   const { user } = useAuth0();
   return (
     <div>
-      <h3 className="text-2xl font-semibold mb-4">Basic Information</h3>
+      <h3 className="text-2xl font-semibold mb-4 ">Basic Information</h3>
       <div className="mb-4">
         <label className="block text-gray-300">Profile Picture</label>
         <img src={user.picture} alt="Profile" />

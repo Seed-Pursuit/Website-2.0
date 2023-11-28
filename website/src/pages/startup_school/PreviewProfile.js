@@ -40,11 +40,11 @@ const PreviewProfile = () => {
                     <div className="p-10">
                         <div className="py-5">
                             <div className="flex justify-left bg-white p-6 rounded-lg shadow-md ">
-                                <div className="text-center p-5">
+                                <div className="text-center p-5 items-center">
                                     <img
                                         src={user.picture}
                                         alt=""
-                                        className="w-40 h-40 object-cover rounded-full"
+                                        className="w-40 object-cover rounded-full"
                                     />
                                 </div>
                                 <div className="px-20 text-center">
