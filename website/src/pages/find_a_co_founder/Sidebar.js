@@ -45,17 +45,18 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="my-2">
-                            <Link to="/discover-profiles" className="flex items-center">
+                            {/* <Link to="/discover-profiles" className="flex items-center"> */}
+                            <Link target='_blank' to="http://localhost:5173" className="flex items-center">
                                 <FiUsers className="mr-2" />
                                 Discover Profiles
                             </Link>
                         </li>
-                        <li className="my-2">
+                        {/* <li className="my-2">
                             <Link to="/inbox" className="flex items-center">
                                 <FiMail className="mr-2" />
                                 Inbox
                             </Link>
-                        </li>
+                        </li> */}
                         {/* <li className="my-2">
                             <Link to="/read-the-guide" className="flex items-center">
                                 <FiBook className="mr-2" />
