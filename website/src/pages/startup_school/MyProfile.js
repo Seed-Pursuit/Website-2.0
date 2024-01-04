@@ -13,6 +13,7 @@ const MyProfile = () => {
       firstName: '',
       lastName: '',
       email: user.email,
+      usertype:'',
       pronouns: '',
       bio: '',
       profileImage: null,
@@ -129,6 +130,18 @@ const BasicInfoSection = ({ profileData, setProfileData }) => {
       <div className="mb-4">
         <label className="block text-gray-300">Profile Picture</label>
         <img src={user.picture} alt="Profile" />
+      </div>
+      <div>
+        <label className="block text-gray-300">User Type</label>
+        <select
+          name="usertype"
+          value={profileData.usertype}
+          onChange={(e) => setProfileData({ ...profileData, usertype: e.target.value })}
+          className="p-2 border border-gray-300 rounded w-full"
+        >
+          <option value="founder">Founder</option>
+          <option value="investor">Investor</option>
+        </select>
       </div>
       <div className="mb-4">
         <label className="block text-gray-300">First Name</label>

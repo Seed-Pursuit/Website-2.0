@@ -1,15 +1,52 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Sidebar from '../find_a_co_founder/Sidebar';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Dashboard() {
+  const { user, isAuthenticated } = useAuth0();
+
   return (
     <div className='flex'>
       <div>
         <Sidebar />
       </div>
       <div className='py-20'>
-        <div className="bg-gray-100 p-4">
+      <h1 className="text-2xl font-semibold mb-4">Welcome, {user.name}!</h1>
+            <p className="text-gray-600 mb-8">
+              Thank you for being part of Seed Pursuit. Explore and grow with our diverse platforms.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Seed Pursuit */}
+              <div className="p-6 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600">
+                <h2 className="text-xl font-semibold mb-2">Seed Pursuit</h2>
+                <p className="text-sm">Explore startups and create your own journey.</p>
+                <a href="https://seedpursuit.vercel.app/" className="text-sm mt-4 underline">
+                  Go to Seed Pursuit
+                </a>
+              </div>
+
+              {/* Pursuit Gram */}
+              <div className="p-6 bg-green-500 text-white rounded-md cursor-pointer hover:bg-green-600">
+                <h2 className="text-xl font-semibold mb-2">Pursuit Gram</h2>
+                <p className="text-sm">Share updates, achievements, and connect with the community.</p>
+                <a href="http://localhost:5173/" className="text-sm mt-4 underline">
+                  Go to Pursuit Gram
+                </a>
+              </div>
+
+              {/* Pursuit Coin */}
+              <div className="p-6 bg-purple-500 text-white rounded-md cursor-pointer hover:bg-purple-600">
+                <h2 className="text-xl font-semibold mb-2">Pursuit Coin</h2>
+                <p className="text-sm">Support startups by participating in crowdfunding campaigns.</p>
+                <a href="/pursuit-coin" className="text-sm mt-4 underline">
+                  Go to Pursuit Coin
+                </a>
+              </div>
+            </div>
+
+        {/* <div className="bg-gray-100 p-4">
           <h1 className="text-3xl font-bold mb-4">Seed Pursuit Matching Dashboard</h1>
 
           <div className='flex p-4'>
@@ -87,7 +124,7 @@ function Dashboard() {
             We're always trying to improve your experience. If you have any
             feedback, let us know!
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
