@@ -13,7 +13,7 @@ const MyProfile = () => {
       firstName: '',
       lastName: '',
       email: user.email,
-      usertype:'',
+      usertype: '',
       pronouns: '',
       bio: '',
       profileImage: null,
@@ -28,7 +28,8 @@ const MyProfile = () => {
       schedulingUrl: '',
       additionalInfo: '',
       videoIntroduction: '',
-      additionalLinks: ''
+      additionalLinks: '',
+      username: ''
     },
     moreInfo: {
       startupIdea: '',
@@ -95,6 +96,16 @@ const MyProfile = () => {
           console.error('Error adding profile section:', error);
         });
     }
+    if (profileData.username) {
+      const usernameRef = ref(db, 'usernames/' + profileData.username);
+      set(usernameRef, { userId: user.sub })
+        .then(() => {
+          console.log('Username and user ID saved successfully.');
+        })
+        .catch((error) => {
+          console.error('Error saving username and user ID:', error);
+        });
+    }
   };
 
 
@@ -103,7 +114,17 @@ const MyProfile = () => {
       <Sidebar />
 
       <div className="flex-1 p-20">
-
+        <div className="mb-4">
+          <label className="block text-gray-300">Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="E.g., john_doe"
+            value={profileData.username}
+            onChange={(e) => setProfileData({ ...profileData, username: e.target.value })}
+            className="p-2 border border-gray-300 rounded w-full"
+          />
+        </div>
         <BasicInfoSection
           profileData={profileData.basic}
           setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
