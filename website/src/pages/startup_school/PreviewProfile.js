@@ -7,6 +7,7 @@ import { FiLinkedin, FiMail, FiMap, FiMapPin, FiUser } from "react-icons/fi";
 import { FaBirthdayCake, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
 
 const PreviewProfile = () => {
+    
     const db = getDatabase(app);
     const { user, isAuthenticated } = useAuth0();
     const [profileData, setProfileData] = useState(null);

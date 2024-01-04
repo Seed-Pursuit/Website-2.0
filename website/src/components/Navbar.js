@@ -177,15 +177,15 @@ const Navbar = () => {
                                         className="absolute mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg p-2"
                                     >
                                         <ul className="py-2 space-y-2">
-                                            <li>
+                                            {/* <li>
                                                 <Link to="/startup_school" onClick={() => closeDropdown('resources')}>Startup School</Link>
-                                            </li>
+                                            </li> */}
                                             <li>
                                                 <Link to="/newsletter" onClick={() => closeDropdown('resources')}>Newsletter</Link>
                                             </li>
-                                            <li>
+                                            {/* <li>
                                                 <Link to="/investor_resources" onClick={() => closeDropdown('resources')}>For Investors</Link>
-                                            </li>
+                                            </li> */}
                                             <li>
                                                 <Link to="/hackers_news" onClick={() => closeDropdown('resources')}>Hackers News</Link>
                                             </li>
@@ -255,7 +255,10 @@ const Navbar = () => {
                                                 <Link to="/profile" onClick={() => closeDropdown('profile')}>Profile Settings</Link>
                                             </li>
                                             <li>
-                                                <button onClick={() => logout()} >Logout</button>
+                                                <button
+                                                    onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >
+                                                    Logout
+                                                </button>
                                             </li>
                                         </ul>
                                     </motion.div>

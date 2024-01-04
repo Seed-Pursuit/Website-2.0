@@ -1,36 +1,5 @@
 import React from 'react';
 
-const teamMembers = [
-  {
-    name: 'Vaishnavi Kale',
-    avatar: '../../assets/avatar1.png'
-  },
-  {
-    name: 'Shreya Jadhav',
-    avatar: '../../assets/avatar2.png'
-  },
-  {
-    name: 'Shruti Shende',
-    avatar: '../../assets/avatar3.png',
-  },
-  {
-    name: 'Sawari Shinde',
-    avatar: '../../assets/avatar4.png'
-  },
-];
-
-const TeamMember = ({ name, avatar }) => (
-  <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 p-4 border">
-    <img src={avatar} alt={name} className="w-32 h-32 rounded-full mx-auto" />
-    <h3 className="text-lg font-semibold text-center mt-4">{name}</h3>
-    <hr />
-    <p className='text-sm font-semibold text-center mt-3'>Student</p>
-    <p className='text-sm font-semibold text-center mt-3'>Computer Engineering</p>
-    <p className='text-sm font-semibold text-center mt-3'>CCOEW '24</p>
-  </div>
-);
-
-
 const People = () => {
   return (
     <div>
@@ -48,9 +17,41 @@ const People = () => {
         </svg>
       </div>
       <div className="flex flex-wrap justify-center">
-        {teamMembers.map((member, index) => (
-          <TeamMember key={index} {...member} />
-        ))}
+        <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 p-4 border">
+          <img src='https://i.pravatar.cc/150?img=10' alt='Vaishnavi Kale' className="w-32 h-32 rounded-full mx-auto" />
+          <h3 className="text-lg font-semibold text-center mt-4">Vaishnavi Kale</h3>
+          <hr />
+          <p className='text-sm font-semibold text-center mt-3'>Student</p>
+          <p className='text-sm font-semibold text-center mt-3'>Computer Engineering</p>
+          <p className='text-sm font-semibold text-center mt-3'>CCOEW '24</p>
+        </div>
+
+        <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 p-4 border">
+          <img src='https://i.pravatar.cc/150?img=5' alt='Shreya Jadhav' className="w-32 h-32 rounded-full mx-auto" />
+          <h3 className="text-lg font-semibold text-center mt-4">Shreya Jadhav</h3>
+          <hr />
+          <p className='text-sm font-semibold text-center mt-3'>Student</p>
+          <p className='text-sm font-semibold text-center mt-3'>Computer Engineering</p>
+          <p className='text-sm font-semibold text-center mt-3'>CCOEW '24</p>
+        </div>
+
+        <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 p-4 border">
+          <img src='https://i.pravatar.cc/150?img=20' alt='Shruti Shende' className="w-32 h-32 rounded-full mx-auto" />
+          <h3 className="text-lg font-semibold text-center mt-4">Shruti Shende</h3>
+          <hr />
+          <p className='text-sm font-semibold text-center mt-3'>Student</p>
+          <p className='text-sm font-semibold text-center mt-3'>Computer Engineering</p>
+          <p className='text-sm font-semibold text-center mt-3'>CCOEW '24</p>
+        </div>
+
+        <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 p-4 border">
+          <img src='https://i.pravatar.cc/150?img=26' alt='Sawari Shinde' className="w-32 h-32 rounded-full mx-auto" />
+          <h3 className="text-lg font-semibold text-center mt-4">Sawari Shinde</h3>
+          <hr />
+          <p className='text-sm font-semibold text-center mt-3'>Student</p>
+          <p className='text-sm font-semibold text-center mt-3'>Computer Engineering</p>
+          <p className='text-sm font-semibold text-center mt-3'>CCOEW '24</p>
+        </div>
       </div>
     </div>
   );

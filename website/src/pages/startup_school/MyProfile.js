@@ -29,7 +29,7 @@ const MyProfile = () => {
       additionalInfo: '',
       videoIntroduction: '',
       additionalLinks: '',
-      username: ''
+      // username: ''
     },
     moreInfo: {
       startupIdea: '',
@@ -114,7 +114,7 @@ const MyProfile = () => {
       <Sidebar />
 
       <div className="flex-1 p-20">
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-gray-300">Username</label>
           <input
             type="text"
@@ -124,7 +124,7 @@ const MyProfile = () => {
             onChange={(e) => setProfileData({ ...profileData, username: e.target.value })}
             className="p-2 border border-gray-300 rounded w-full"
           />
-        </div>
+        </div> */}
         <BasicInfoSection
           profileData={profileData.basic}
           setProfileData={(data) => setProfileData({ ...profileData, basic: data })}
