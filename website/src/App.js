@@ -35,6 +35,7 @@ import PreviewProfile from "./pages/startup_school/PreviewProfile";
 import Track from "./pages/startup_school/Track";
 import CompanyInfo from "./pages/startup_school/CompanyInfo";
 import StartupHome from "./pages/startup/StartupHome";
+import AllStartups from "./pages/startup/AllStartups";
 
 function App() {
   return (
@@ -79,6 +80,7 @@ function App() {
           <Route path="/track" element={<Track/>} exact/>
           <Route path="/company_info" element={<CompanyInfo/>} exact/>
           <Route path="/register-startup" element={<StartupHome/>} exact/>
+          <Route path="/all-startup" element={<AllStartups/>} exact/>
           <Route path="/startup/:startupKey" element={<StartupProfile/>} />
         </Routes>
         <Footer />
