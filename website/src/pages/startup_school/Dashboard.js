@@ -22,7 +22,7 @@ function Dashboard() {
               <div className="p-6 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600">
                 <h2 className="text-xl font-semibold mb-2">Seed Pursuit</h2>
                 <p className="text-sm">Explore startups and create your own journey.</p>
-                <a href="https://seedpursuit.vercel.app/" className="text-sm mt-4 underline">
+                <a target='_blank' href="https://seedpursuit.vercel.app/" className="text-sm mt-4 underline">
                   Go to Seed Pursuit
                 </a>
               </div>
@@ -31,7 +31,7 @@ function Dashboard() {
               <div className="p-6 bg-green-500 text-white rounded-md cursor-pointer hover:bg-green-600">
                 <h2 className="text-xl font-semibold mb-2">Pursuit Gram</h2>
                 <p className="text-sm">Share updates, achievements, and connect with the community.</p>
-                <a href="http://localhost:5173/" className="text-sm mt-4 underline">
+                <a target='_blank' href="http://localhost:5173/" className="text-sm mt-4 underline">
                   Go to Pursuit Gram
                 </a>
               </div>
@@ -40,7 +40,7 @@ function Dashboard() {
               <div className="p-6 bg-purple-500 text-white rounded-md cursor-pointer hover:bg-purple-600">
                 <h2 className="text-xl font-semibold mb-2">Pursuit Coin</h2>
                 <p className="text-sm">Support startups by participating in crowdfunding campaigns.</p>
-                <a href="/pursuit-coin" className="text-sm mt-4 underline">
+                <a  target='_blank' href="http://localhost:3000/" className="text-sm mt-4 underline">
                   Go to Pursuit Coin
                 </a>
               </div>
