@@ -210,11 +210,14 @@ const Navbar = () => {
                                     >
                                         <ul className="py-2 space-y-2">
                                             <li>
-                                                <a href="http://localhost:3000/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>View Grants</a>
+                                            <a href="https://pursuit-gram.vercel.app/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-gram')}>Post update</a>
                                             </li>
                                             <li>
-                                                <a href="http://localhost:3000/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>Apply for a Grant</a>
+                                                <a href="http://localhost:3000/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>View Grants</a>
                                             </li>
+                                            // <li>
+                                            //     <a href="http://localhost:3000/" target='_blank' alt="" rel='noreferrer' onClick={() => closeDropdown('pursuit-coin')}>Apply for a Grant</a>
+                                            // </li>
                                         </ul>
                                     </motion.div>
                                 )}
